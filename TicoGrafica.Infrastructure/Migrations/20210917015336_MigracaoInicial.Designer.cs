@@ -9,7 +9,7 @@ using TicoGrafica.Infrastructure;
 namespace TicoGrafica.Infrastructure.Migrations
 {
     [DbContext(typeof(TicoGraficaContext))]
-    [Migration("20210916221532_MigracaoInicial")]
+    [Migration("20210917015336_MigracaoInicial")]
     partial class MigracaoInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -245,9 +245,6 @@ namespace TicoGrafica.Infrastructure.Migrations
 
                             b1.Property<string>("Endereco")
                                 .HasColumnType("TEXT");
-
-                            b1.Property<int>("IdPessoa")
-                                .HasColumnType("INTEGER");
 
                             b1.Property<string>("Municipio")
                                 .HasColumnType("TEXT");

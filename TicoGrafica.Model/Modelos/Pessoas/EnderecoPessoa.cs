@@ -1,8 +1,10 @@
-﻿namespace TicoGrafica.Model.Modelos.Pessoas
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TicoGrafica.Model.Modelos.Pessoas
 {
     public class EnderecoPessoa
     {
-        public int IdPessoa { get; private set; }
+        public int PessoaId { get; private set; }
         public string Endereco { get; private set; }
         public string Bairro { get; private set; }
         public string Numero { get; private set; }
@@ -18,7 +20,7 @@
 
         public EnderecoPessoa(int idPessoa, string endereco, string bairro, string numero, string complemento, string municipio, string cep)
         {
-            IdPessoa = idPessoa;
+            PessoaId = idPessoa;
             Endereco = endereco;
             Bairro = bairro;
             Numero = numero;

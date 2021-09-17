@@ -244,9 +244,6 @@ namespace TicoGrafica.Infrastructure.Migrations
                             b1.Property<string>("Endereco")
                                 .HasColumnType("TEXT");
 
-                            b1.Property<int>("IdPessoa")
-                                .HasColumnType("INTEGER");
-
                             b1.Property<string>("Municipio")
                                 .HasColumnType("TEXT");
 

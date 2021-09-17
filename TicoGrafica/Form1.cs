@@ -1,21 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.Extensions.Configuration;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using TicoGrafica.Services.Services.IServices;
 
 namespace TicoGrafica
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private readonly IPessoaService _pessoaService;
+
+        public Form1(IPessoaService pessoaService)
         {
+            _pessoaService = pessoaService;
+
             InitializeComponent();
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            var pessoa = _pessoaService.BuscarPorId(1);
+        }
     }
 }

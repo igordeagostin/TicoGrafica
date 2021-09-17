@@ -1,17 +1,12 @@
 ﻿
+using TicoGrafica.Services.Services.IServices;
+
 namespace TicoGrafica
 {
     partial class Form1
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -40,13 +35,13 @@ namespace TicoGrafica
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -157,6 +152,21 @@ namespace TicoGrafica
             this.dataGridView1.Size = new System.Drawing.Size(564, 368);
             this.dataGridView1.TabIndex = 1;
             // 
+            // Nome
+            // 
+            this.Nome.HeaderText = "Nome ";
+            this.Nome.Name = "Nome";
+            // 
+            // Telefone
+            // 
+            this.Telefone.HeaderText = "Telefone";
+            this.Telefone.Name = "Telefone";
+            // 
+            // Documento
+            // 
+            this.Documento.HeaderText = "CPF/CNPJ";
+            this.Documento.Name = "Documento";
+            // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -196,21 +206,7 @@ namespace TicoGrafica
             this.button6.TabIndex = 0;
             this.button6.Text = "CADASTRAR";
             this.button6.UseVisualStyleBackColor = true;
-            // 
-            // Nome
-            // 
-            this.Nome.HeaderText = "Nome ";
-            this.Nome.Name = "Nome";
-            // 
-            // Telefone
-            // 
-            this.Telefone.HeaderText = "Telefone";
-            this.Telefone.Name = "Telefone";
-            // 
-            // Documento
-            // 
-            this.Documento.HeaderText = "CPF/CNPJ";
-            this.Documento.Name = "Documento";
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Form1
             // 

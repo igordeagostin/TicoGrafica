@@ -1,4 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.Configuration;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using TicoGrafica.Model.Modelos.ContasAPagar;
 using TicoGrafica.Model.Modelos.ContasAReceber;
 using TicoGrafica.Model.Modelos.Orcamentos;
@@ -10,7 +16,10 @@ namespace TicoGrafica.Infrastructure
     public class TicoGraficaContext : DbContext
     {
         public TicoGraficaContext() { }
-        public TicoGraficaContext(DbContextOptions<TicoGraficaContext> options) : base(options) { }
+        public TicoGraficaContext(DbContextOptions<TicoGraficaContext> options) : base(options)
+        {
+            //Database.EnsureCreated();
+        }
 
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<EnderecoPessoa> EnderecoPessoa { get; set; }
@@ -23,7 +32,16 @@ namespace TicoGrafica.Infrastructure
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var connectionString = $"Data Source=TicoGrafica.db";
+                var configuration = new ConfigurationBuilder()
+                    .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                    .AddXmlFile("App.config")
+                    .Build();
+
+                string connectionString;
+                configuration
+                    .Providers
+                    .FirstOrDefault()
+                    .TryGet("connectionStrings:add:ConnectionString:connectionString", out connectionString);
 
                 optionsBuilder.UseSqlite(connectionString);
             }
@@ -35,7 +53,7 @@ namespace TicoGrafica.Infrastructure
             builder.Entity<Pessoa>().HasKey(m => m.Id);
             builder.Entity<Pessoa>().OwnsOne(p => p.Endereco);
 
-            ////Endereço pessoa
+            ////Produto
             //builder.Entity<EnderecoPessoa>().HasKey(m => m.IdPessoa);
 
             //Produto
@@ -53,7 +71,6 @@ namespace TicoGrafica.Infrastructure
                 .HasForeignKey(x => x.IdProduto)
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
-
 
             //Contas a receber
             builder.Entity<ContasReceber>().HasKey(m => m.Id);

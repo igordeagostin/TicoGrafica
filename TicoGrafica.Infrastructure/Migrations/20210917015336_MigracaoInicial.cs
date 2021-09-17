@@ -99,7 +99,7 @@ namespace TicoGrafica.Infrastructure.Migrations
                 name: "EnderecoPessoa",
                 columns: table => new
                 {
-                    IdPessoa = table.Column<int>(type: "INTEGER", nullable: false),
+                    PessoaId = table.Column<int>(type: "INTEGER", nullable: false),
                     Endereco = table.Column<string>(type: "TEXT", nullable: true),
                     Bairro = table.Column<string>(type: "TEXT", nullable: true),
                     Numero = table.Column<string>(type: "TEXT", nullable: true),
@@ -109,10 +109,10 @@ namespace TicoGrafica.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EnderecoPessoa", x => x.IdPessoa);
+                    table.PrimaryKey("PK_EnderecoPessoa", x => x.PessoaId);
                     table.ForeignKey(
-                        name: "FK_EnderecoPessoa_Pessoas_IdPessoa",
-                        column: x => x.IdPessoa,
+                        name: "FK_EnderecoPessoa_Pessoas_PessoaId",
+                        column: x => x.PessoaId,
                         principalTable: "Pessoas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);

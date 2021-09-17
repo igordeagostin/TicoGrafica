@@ -27,4 +27,10 @@
     <ProjectReference Include="..\TicoGrafica.Services\TicoGrafica.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
