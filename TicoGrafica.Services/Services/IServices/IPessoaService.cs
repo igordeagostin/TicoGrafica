@@ -4,6 +4,6 @@ namespace TicoGrafica.Services.Services.IServices
 {
     public interface IPessoaService
     {
-        public Pessoa BuscarPorId(int idPessoa);
+        public Pessoa BuscarPorId(int id);
     }
 }

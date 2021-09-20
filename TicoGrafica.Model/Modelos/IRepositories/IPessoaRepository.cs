@@ -4,6 +4,6 @@ namespace TicoGrafica.Model.Modelos.IRepositories
 {
     public interface IPessoaRepository
     {
-        public Pessoa BuscarPorId(int idPessoa);
+        public Pessoa BuscarPorId(int id);
     }
 }
