@@ -18,9 +18,8 @@ namespace TicoGrafica.Model.Modelos.Pessoas
 
         }
 
-        public EnderecoPessoa(int idPessoa, string endereco, string bairro, string numero, string complemento, string municipio, string cep)
+        public EnderecoPessoa(string endereco, string bairro, string numero, string complemento, string municipio, string cep)
         {
-            PessoaId = idPessoa;
             Endereco = endereco;
             Bairro = bairro;
             Numero = numero;

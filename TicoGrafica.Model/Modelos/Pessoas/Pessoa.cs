@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using TicoGrafica.Model.Extensoes;
 using TicoGrafica.Model.Modelos.ContasAPagar;
 using TicoGrafica.Model.Modelos.ContasAReceber;
