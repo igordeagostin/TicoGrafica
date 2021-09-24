@@ -11,6 +11,7 @@ namespace TicoGrafica.Model.Modelos.Pessoas
     public class Pessoa : Entidade
     {
         public string Nome { get; private set; }
+        public string Celular { get; private set; }
         public string Telefone { get; private set; }
         public string Email { get; private set; }
         public TipoPessoa TipoPessoa { get; private set; }
@@ -25,9 +26,10 @@ namespace TicoGrafica.Model.Modelos.Pessoas
         {
 
         }
-        public Pessoa(string nome, string telefone, string email, TipoPessoa tipoPessoa, string cpf, string cnpj, EnderecoPessoa endereco)
+        public Pessoa(string nome, string celular, string telefone, string email, TipoPessoa tipoPessoa, string cpf, string cnpj, EnderecoPessoa endereco)
         {
             Nome = nome;
+            Celular = celular;
             Telefone = telefone;
             Email = email;
             TipoPessoa = tipoPessoa;

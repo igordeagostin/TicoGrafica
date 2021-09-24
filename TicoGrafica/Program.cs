@@ -67,8 +67,8 @@ namespace TicoGrafica
             );
 
             services.AddScoped<Form_TelaInicial>();
-            services.AddScoped<Form_Cadastrar_Pessoa>();
-            services.AddScoped<Form_TelaInicial_Pessoas>();
+            //services.AddScoped<Form_Cadastrar_Pessoa>();
+            //services.AddScoped<Form_TelaInicial_Pessoas>();
         }
 
         private static void ConfigurandoBancoDeDados(ServiceCollection serviceCollection)

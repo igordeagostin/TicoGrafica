@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -10,24 +11,19 @@ namespace TicoGrafica
 {
     public partial class Form_TelaInicial : Form
     {
-        private readonly IPessoaService _pessoaService;
-        private readonly Form_TelaInicial_Pessoas _telaInicialPessoas;
+        private Form_TelaInicial_Pessoas _telaInicialPessoas;
+        private readonly IServiceScopeFactory _scopeFactory;
 
-        public Form_TelaInicial(IPessoaService pessoaService, Form_TelaInicial_Pessoas telaInicialPessoas)
+        public Form_TelaInicial(IServiceScopeFactory scopeFactory)
         {
-            _pessoaService = pessoaService;
-            _telaInicialPessoas = telaInicialPessoas;
-
+            _scopeFactory = scopeFactory;
             InitializeComponent();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            var pessoa = _pessoaService.BuscarPorId(1);
         }
 
         private void buttonPessoas_Click(object sender, EventArgs e)
         {
+            _telaInicialPessoas = new Form_TelaInicial_Pessoas(_scopeFactory);
+
             _telaInicialPessoas.TopLevel = false;
             _telaInicialPessoas.AutoScroll = true;
             this.panelPrincipal.Controls.Add(_telaInicialPessoas);
