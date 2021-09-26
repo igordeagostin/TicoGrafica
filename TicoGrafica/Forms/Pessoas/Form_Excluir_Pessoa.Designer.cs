@@ -72,7 +72,10 @@ namespace TicoGrafica.Forms.Forms.Pessoas
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonExcluir);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form_Excluir_Pessoa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_Excluir_Pessoa";
             this.ResumeLayout(false);
             this.PerformLayout();

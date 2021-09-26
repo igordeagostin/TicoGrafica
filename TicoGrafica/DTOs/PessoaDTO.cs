@@ -4,6 +4,7 @@ namespace TicoGrafica.Forms.DTOs
 {
     public class PessoaDTO
     {
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Celular { get; set; }
         public string Telefone { get; set; }

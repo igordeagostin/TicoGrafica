@@ -28,5 +28,10 @@ namespace TicoGrafica.Services.Services
         {
             return _pessoaRepository.BuscarTodos();
         }
+
+        public void Excluir(int id)
+        {
+            _pessoaRepository.Excluir(id);
+        }
     }
 }

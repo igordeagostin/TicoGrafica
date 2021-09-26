@@ -38,7 +38,7 @@
             this.panelPessoas.Location = new System.Drawing.Point(-1, -1);
             this.panelPessoas.Margin = new System.Windows.Forms.Padding(0);
             this.panelPessoas.Name = "panelPessoas";
-            this.panelPessoas.Size = new System.Drawing.Size(1146, 758);
+            this.panelPessoas.Size = new System.Drawing.Size(1146, 741);
             this.panelPessoas.TabIndex = 3;
             // 
             // dataGridViewPessoas
@@ -50,10 +50,12 @@
             this.dataGridViewPessoas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPessoas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.dataGridViewPessoas.Location = new System.Drawing.Point(8, 59);
+            this.dataGridViewPessoas.MultiSelect = false;
             this.dataGridViewPessoas.Name = "dataGridViewPessoas";
             this.dataGridViewPessoas.ReadOnly = true;
             this.dataGridViewPessoas.RowTemplate.Height = 25;
-            this.dataGridViewPessoas.Size = new System.Drawing.Size(1135, 696);
+            this.dataGridViewPessoas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewPessoas.Size = new System.Drawing.Size(1135, 679);
             this.dataGridViewPessoas.TabIndex = 1;
             // 
             // panelBotoesPessoas
@@ -102,7 +104,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1154, 766);
+            this.ClientSize = new System.Drawing.Size(1154, 749);
             this.Controls.Add(this.panelPessoas);
             this.Name = "Form_TelaInicial_Pessoas";
             this.Text = "TelaInicialPessoas";
