@@ -33,5 +33,10 @@ namespace TicoGrafica.Services.Services
         {
             _pessoaRepository.Excluir(id);
         }
+
+        public Pessoa Alterar(Pessoa pessoa)
+        {
+            return _pessoaRepository.Alterar(pessoa);
+        }
     }
 }

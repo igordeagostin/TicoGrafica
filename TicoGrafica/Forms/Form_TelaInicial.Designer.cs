@@ -62,7 +62,7 @@ namespace TicoGrafica
             // 
             this.button9.Location = new System.Drawing.Point(4, 5);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(193, 49);
+            this.button9.Size = new System.Drawing.Size(193, 96);
             this.button9.TabIndex = 5;
             this.button9.Text = "ÍNICIO";
             this.button9.UseVisualStyleBackColor = true;
@@ -70,45 +70,45 @@ namespace TicoGrafica
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(4, 280);
+            this.button5.Location = new System.Drawing.Point(8, 515);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(193, 49);
+            this.button5.Size = new System.Drawing.Size(193, 96);
             this.button5.TabIndex = 4;
             this.button5.Text = "ORÇAMENTOS";
             this.button5.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(4, 225);
+            this.button4.Location = new System.Drawing.Point(4, 413);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(193, 49);
+            this.button4.Size = new System.Drawing.Size(193, 96);
             this.button4.TabIndex = 3;
             this.button4.Text = "CONTAS A RECEBER";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(4, 170);
+            this.button3.Location = new System.Drawing.Point(4, 311);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(193, 49);
+            this.button3.Size = new System.Drawing.Size(193, 96);
             this.button3.TabIndex = 2;
             this.button3.Text = "CONTAS A PAGAR";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(4, 115);
+            this.button2.Location = new System.Drawing.Point(4, 209);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(193, 49);
+            this.button2.Size = new System.Drawing.Size(193, 96);
             this.button2.TabIndex = 1;
             this.button2.Text = "PRODUTOS";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // buttonPessoas
             // 
-            this.buttonPessoas.Location = new System.Drawing.Point(4, 60);
+            this.buttonPessoas.Location = new System.Drawing.Point(4, 107);
             this.buttonPessoas.Name = "buttonPessoas";
-            this.buttonPessoas.Size = new System.Drawing.Size(193, 49);
+            this.buttonPessoas.Size = new System.Drawing.Size(193, 96);
             this.buttonPessoas.TabIndex = 0;
             this.buttonPessoas.Text = "PESSOAS";
             this.buttonPessoas.UseVisualStyleBackColor = true;
@@ -126,14 +126,14 @@ namespace TicoGrafica
             this.panelPrincipal.Size = new System.Drawing.Size(1290, 718);
             this.panelPrincipal.TabIndex = 2;
             // 
-            // TelaInicial
+            // Form_TelaInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1522, 742);
             this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.panel1);
-            this.Name = "TelaInicial";
+            this.Name = "Form_TelaInicial";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);

@@ -8,6 +8,7 @@ namespace TicoGrafica.Services.Services.IServices
         public Pessoa BuscarPorId(int id);
         public List<Pessoa> BuscarTodos();
         public Pessoa Adicionar(Pessoa pessoa);
+        public Pessoa Alterar(Pessoa pessoa);
         public void Excluir(int id);
     }
 }

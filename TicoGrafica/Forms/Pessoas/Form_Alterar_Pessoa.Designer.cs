@@ -1,7 +1,7 @@
 ﻿
 namespace TicoGrafica.Forms.Forms.Pessoas
 {
-    partial class Form_Cadastrar_Pessoa
+    partial class Form_Alterar_Pessoa
     {
         /// <summary>
         /// Required designer variable.
@@ -67,9 +67,9 @@ namespace TicoGrafica.Forms.Forms.Pessoas
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(210, 28);
+            this.label1.Size = new System.Drawing.Size(178, 28);
             this.label1.TabIndex = 0;
-            this.label1.Text = "CADASTRAR PESSOA";
+            this.label1.Text = "ALTERAR PESSOA";
             // 
             // panel1
             // 
@@ -351,7 +351,7 @@ namespace TicoGrafica.Forms.Forms.Pessoas
             this.label2.TabIndex = 0;
             this.label2.Text = "Nome:";
             // 
-            // Form_Cadastrar_Pessoa
+            // Form_Alterar_Pessoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -359,9 +359,9 @@ namespace TicoGrafica.Forms.Forms.Pessoas
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
-            this.Name = "Form_Cadastrar_Pessoa";
+            this.Name = "Form_Alterar_Pessoa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CadastrarPessoa";
+            this.Text = "Alterar pessoa";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

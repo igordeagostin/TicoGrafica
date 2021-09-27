@@ -57,6 +57,8 @@
             this.dataGridViewPessoas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPessoas.Size = new System.Drawing.Size(1135, 679);
             this.dataGridViewPessoas.TabIndex = 1;
+            this.dataGridViewPessoas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPessoas_CellDoubleClick);
+            this.dataGridViewPessoas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewPessoas_KeyPress);
             // 
             // panelBotoesPessoas
             // 

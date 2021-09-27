@@ -27,5 +27,15 @@ namespace TicoGrafica.Model.Modelos.Pessoas
             Municipio = municipio;
             Cep = cep;
         }
+
+        public void Alterar (EnderecoPessoa endereco)
+        {
+            Endereco = endereco.Endereco;
+            Bairro = endereco.Bairro;
+            Numero = endereco.Numero;
+            Complemento = endereco.Complemento;
+            Municipio = endereco.Municipio;
+            Cep = endereco.Cep;
+        }
     }
 }

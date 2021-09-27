@@ -30,10 +30,14 @@ namespace TicoGrafica.Forms.Forms.Pessoas
             AtualizarDataGridViewPessoas();
         }
 
-
         private void buttonAlterarPessoa_Click(object sender, EventArgs e)
         {
-            AtualizarDataGridViewPessoas();
+            using (var scope = _scopeFactory.CreateScope())
+            {
+                _pessoaService = scope.ServiceProvider.GetRequiredService<IPessoaService>();
+                var pessoa = _pessoaService.BuscarPorId(RecuperarLinhaSelecionada());
+                new Form_Alterar_Pessoa(this, _scopeFactory, pessoa).ShowDialog();
+            }
         }
 
         public void AtualizarDataGridViewPessoas()
@@ -107,6 +111,24 @@ namespace TicoGrafica.Forms.Forms.Pessoas
         private void buttonExcluir_Click(object sender, EventArgs e)
         {
             new Form_Excluir_Pessoa(_scopeFactory, this).ShowDialog();
+        }
+
+        private void dataGridViewPessoas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            using (var scope = _scopeFactory.CreateScope())
+            {
+                _pessoaService = scope.ServiceProvider.GetRequiredService<IPessoaService>();
+                var pessoa = _pessoaService.BuscarPorId(RecuperarLinhaSelecionada());
+                new Form_Alterar_Pessoa(this, _scopeFactory, pessoa).ShowDialog();
+            }
+        }
+
+        private void dataGridViewPessoas_KeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                new Form_Excluir_Pessoa(_scopeFactory, this).ShowDialog();
+            }
         }
     }
 }

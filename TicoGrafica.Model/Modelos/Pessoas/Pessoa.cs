@@ -33,7 +33,6 @@ namespace TicoGrafica.Model.Modelos.Pessoas
             Telefone = telefone;
             Email = email;
             TipoPessoa = tipoPessoa;
-            Endereco = endereco;
             DataCriacao = DateTime.Now.DataTimeZoneCorreto();
             DataAlteracao = DateTime.Now.DataTimeZoneCorreto();
 
@@ -46,6 +45,8 @@ namespace TicoGrafica.Model.Modelos.Pessoas
                 Cnpj = cnpj;
             }
 
+            Endereco = endereco;
+
             EstaValido();
         }
 
@@ -53,9 +54,9 @@ namespace TicoGrafica.Model.Modelos.Pessoas
         {
             Nome = pessoa.Nome;
             Telefone = pessoa.Telefone;
+            Celular = pessoa.Celular;
             Email = pessoa.Email;
             TipoPessoa = pessoa.TipoPessoa;
-            Endereco = pessoa.Endereco;
             DataAlteracao = DateTime.Now.DataTimeZoneCorreto();
 
             if (pessoa.TipoPessoa == TipoPessoa.FISICA)
@@ -65,6 +66,11 @@ namespace TicoGrafica.Model.Modelos.Pessoas
             else if (pessoa.TipoPessoa == TipoPessoa.JURIDICA)
             {
                 Cnpj = pessoa.Cnpj;
+            }
+
+            if (Endereco != null)
+            {
+                Endereco.Alterar(pessoa.Endereco);
             }
 
             EstaValido();

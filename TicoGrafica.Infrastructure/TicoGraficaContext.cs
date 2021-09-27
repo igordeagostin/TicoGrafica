@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Configuration;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using TicoGrafica.Model.Modelos.ContasAPagar;
 using TicoGrafica.Model.Modelos.ContasAReceber;
