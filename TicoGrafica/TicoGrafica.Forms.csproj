@@ -31,6 +31,18 @@
     <Compile Update="Forms\Pessoas\Form_Alterar_Pessoa.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Produtos\Form_Alterar_Produto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Produtos\Form_Cadastrar_Produto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Produtos\Form_Excluir_Produto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Produtos\Form_TelaInicial_Produtos.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

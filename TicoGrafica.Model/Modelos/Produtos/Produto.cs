@@ -8,14 +8,14 @@ namespace TicoGrafica.Model.Modelos.Produtos
     public class Produto : Entidade
     {
         public string Nome { get; private set; }
-        public double Valor { get; private set; }
+        public double? Valor { get; private set; }
         public ICollection<Orcamento> Orcamentos { get; set; }
 
         public Produto()
         {
 
         }
-        public Produto(string nome, double valor)
+        public Produto(string nome, double? valor)
         {
             Nome = nome;
             Valor = valor;

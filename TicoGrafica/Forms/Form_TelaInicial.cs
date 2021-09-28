@@ -1,17 +1,15 @@
-﻿using Microsoft.Data.Sqlite;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 using TicoGrafica.Forms.Forms.Pessoas;
-using TicoGrafica.Services.Services.IServices;
+using TicoGrafica.Forms.Forms.Produtos;
 
 namespace TicoGrafica
 {
     public partial class Form_TelaInicial : Form
     {
         private Form_TelaInicial_Pessoas _telaInicialPessoas;
+        private Form_TelaInicial_Produtos _telaInicialProdutos;
         private readonly IServiceScopeFactory _scopeFactory;
 
         public Form_TelaInicial(IServiceScopeFactory scopeFactory)
@@ -34,6 +32,17 @@ namespace TicoGrafica
         private void button9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _telaInicialProdutos = new Form_TelaInicial_Produtos(_scopeFactory);
+
+            _telaInicialProdutos.TopLevel = false;
+            _telaInicialProdutos.AutoScroll = true;
+            this.panelPrincipal.Controls.Add(_telaInicialProdutos);
+            _telaInicialProdutos.FormBorderStyle = FormBorderStyle.None;
+            _telaInicialProdutos.Show();
         }
     }
 }
