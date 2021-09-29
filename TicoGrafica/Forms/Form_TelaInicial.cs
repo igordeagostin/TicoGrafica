@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
+using TicoGrafica.Forms.Forms.ContasPagar;
 using TicoGrafica.Forms.Forms.Pessoas;
 using TicoGrafica.Forms.Forms.Produtos;
 
@@ -10,6 +11,7 @@ namespace TicoGrafica
     {
         private Form_TelaInicial_Pessoas _telaInicialPessoas;
         private Form_TelaInicial_Produtos _telaInicialProdutos;
+        private Form_TelaInicial_ContasPagar _telaInicialContasPagar;
         private readonly IServiceScopeFactory _scopeFactory;
 
         public Form_TelaInicial(IServiceScopeFactory scopeFactory)
@@ -43,6 +45,17 @@ namespace TicoGrafica
             this.panelPrincipal.Controls.Add(_telaInicialProdutos);
             _telaInicialProdutos.FormBorderStyle = FormBorderStyle.None;
             _telaInicialProdutos.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            _telaInicialContasPagar = new Form_TelaInicial_ContasPagar(_scopeFactory);
+
+            _telaInicialContasPagar.TopLevel = false;
+            _telaInicialContasPagar.AutoScroll = true;
+            this.panelPrincipal.Controls.Add(_telaInicialContasPagar);
+            _telaInicialContasPagar.FormBorderStyle = FormBorderStyle.None;
+            _telaInicialContasPagar.Show();
         }
     }
 }

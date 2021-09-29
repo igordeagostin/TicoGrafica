@@ -28,6 +28,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Forms\ContasPagar\Form_Cadastrar_ContasPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ContasPagar\Form_TelaInicial_ContasPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Pessoas\Form_Alterar_Pessoa.cs">
       <SubType>Form</SubType>
     </Compile>
