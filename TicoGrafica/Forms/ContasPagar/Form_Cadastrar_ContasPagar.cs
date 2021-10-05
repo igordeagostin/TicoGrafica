@@ -1,17 +1,18 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
-using TicoGrafica.Forms.Forms.Produtos;
-using TicoGrafica.Model.Modelos.Produtos;
+using TicoGrafica.Model.Modelos.ContasAPagar;
+using TicoGrafica.Model.Utils;
 using TicoGrafica.Services.Services.IServices;
 
 namespace TicoGrafica.Forms.Forms.ContasPagar
 {
     public partial class Form_Cadastrar_ContasPagar : Form
     {
-        private IProdutoService _produtoService;
+        private IContasPagarService _contasPagarService;
         private Form_TelaInicial_ContasPagar _telaInicial_ContasPagar;
         private readonly IServiceScopeFactory _scopeFactory;
+        private IPessoaService _pessoaService;
 
         public Form_Cadastrar_ContasPagar(IServiceScopeFactory scopeFactory)
         {
@@ -26,18 +27,25 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             _scopeFactory = scopeFactory;
 
             InitializeComponent();
+            PreencherComboBox();
         }
 
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
             using (var scope = _scopeFactory.CreateScope())
             {
-                _produtoService = scope.ServiceProvider.GetRequiredService<IProdutoService>();
+                _contasPagarService = scope.ServiceProvider.GetRequiredService<IContasPagarService>();
 
-                var produto = new Produto(textBoxNome.Text,
-                    (string.IsNullOrEmpty(textBoxValor.Text) ? null : (double?)Convert.ToDouble(textBoxValor.Text)));
+                double valor = (string.IsNullOrEmpty(textBoxValor.Text) ? 0 : Convert.ToDouble(textBoxValor.Text));
+                var dataDeEntrega = Convert.ToDateTime(maskedTextBoxDataDeEntrega.Text);
+                var dataDeVencimento = Convert.ToDateTime(maskedTextBoxDataDeVencimento.Text);
+                var idPessoa = Convert.ToInt32(textBoxIdPessoa.Text);
 
-                _produtoService.Adicionar(produto);
+                var contasPagar = new Model.Modelos.ContasAPagar.ContasPagar(textBoxDescricao.Text, valor,
+                    dataDeEntrega, dataDeVencimento, idPessoa,
+                    (comboBoxTipoConta.SelectedIndex == 0 ? TipoSituacao.PENDENTE : TipoSituacao.QUITADO));
+
+                _contasPagarService.Adicionar(contasPagar);
                 this.Visible = false;
             }
 
@@ -51,7 +59,29 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
 
         private void buttonBuscarPessoa_Click(object sender, EventArgs e)
         {
-            new Form_LocalizarPessoa(_scopeFactory).ShowDialog();
+            new Form_LocalizarPessoa(_scopeFactory, this).ShowDialog();
+        }
+
+        public void SetarPessoa(int idPessoa)
+        {
+            using (var scope = _scopeFactory.CreateScope())
+            {
+                _pessoaService = scope.ServiceProvider.GetRequiredService<IPessoaService>();
+
+                var pessoa = _pessoaService.BuscarPorId(idPessoa);
+
+                textBoxNome.Text = pessoa.Nome;
+                textBoxIdPessoa.Text = idPessoa.ToString();
+            }
+        }
+
+        private void PreencherComboBox()
+        {
+            foreach (var tipo in (TipoSituacao[])Enum.GetValues(typeof(TipoSituacao)))
+            {
+                comboBoxTipoConta.Items.Add(EnumHelper<TipoSituacao>.GetDisplayValue(tipo));
+            }
+            comboBoxTipoConta.SelectedIndex = 0;
         }
     }
 }

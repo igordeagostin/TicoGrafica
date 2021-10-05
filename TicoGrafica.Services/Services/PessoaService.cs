@@ -29,6 +29,11 @@ namespace TicoGrafica.Services.Services
             return _pessoaRepository.BuscarTodos();
         }
 
+        public List<Pessoa> BuscarPorNomeOuDocumento(string texto)
+        {
+            return _pessoaRepository.BuscarPorNomeOuDocumento(texto);
+        }
+
         public void Excluir(int id)
         {
             _pessoaRepository.Excluir(id);

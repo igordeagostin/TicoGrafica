@@ -35,6 +35,20 @@ namespace TicoGrafica.Infrastructure.Repositories
             return _context.Pessoas.ToList();
         }
 
+        public List<Pessoa> BuscarPorNomeOuDocumento(string texto)
+        {
+            if (!string.IsNullOrEmpty(texto))
+            {
+                var textoEmMaiusculo = texto.ToUpper();
+
+                return _context.Pessoas
+                .Where(x => (!string.IsNullOrEmpty(x.Nome) && x.Nome.ToUpper().Contains(textoEmMaiusculo)) || x.Cpf.Contains(texto) || x.Cnpj.Contains(texto))
+                .ToList();
+            }
+
+            return BuscarTodos();
+        }
+
         public void Excluir(int id)
         {
             try

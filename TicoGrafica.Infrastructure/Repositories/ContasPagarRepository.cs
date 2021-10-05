@@ -3,6 +3,7 @@ using TicoGrafica.Model.Modelos.IRepositories;
 using TicoGrafica.Model.Modelos.ContasAPagar;
 using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace TicoGrafica.Infrastructure.Repositories
 {
@@ -30,7 +31,9 @@ namespace TicoGrafica.Infrastructure.Repositories
 
         public List<ContasPagar> BuscarTodos()
         {
-            return _context.ContasPagar.ToList();
+            return _context.ContasPagar
+                .Include(x => x.Pessoa)
+                .ToList();
         }
 
         public void Excluir(int id)

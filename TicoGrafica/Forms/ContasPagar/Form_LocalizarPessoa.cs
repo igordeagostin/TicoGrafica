@@ -18,19 +18,23 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
     {
         private IPessoaService _pessoaService;
         private readonly IServiceScopeFactory _scopeFactory;
-        public Form_LocalizarPessoa(IServiceScopeFactory scopeFactory)
+        private Form_Cadastrar_ContasPagar _form_Cadastrar_ContasPagar;
+        public Form_LocalizarPessoa(IServiceScopeFactory scopeFactory, Form_Cadastrar_ContasPagar form_Cadastrar_ContasPagar)
         {
             _scopeFactory = scopeFactory;
+            _form_Cadastrar_ContasPagar = form_Cadastrar_ContasPagar;
 
             InitializeComponent();
+
+            this.ActiveControl = textBoxPesquisar;
         }
 
         private void Form_LocalizarPessoa_Load(object sender, EventArgs e)
         {
-            AtualizarDataGridViewPessoas();
+            AtualizarDataGridViewPessoas(RetornarListaInicialDePessoas());
         }
 
-        public void AtualizarDataGridViewPessoas()
+        private List<PessoaDTO> RetornarListaInicialDePessoas()
         {
             using (var scope = _scopeFactory.CreateScope())
             {
@@ -51,6 +55,39 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
                 })
                 .ToList();
 
+                return pessoas;
+            }
+        }
+
+        private List<PessoaDTO> RetornarListaDePessoasPesquisadas(string texto)
+        {
+            using (var scope = _scopeFactory.CreateScope())
+            {
+                _pessoaService = scope.ServiceProvider.GetRequiredService<IPessoaService>();
+
+                var pessoas = _pessoaService
+                .BuscarPorNomeOuDocumento(texto)
+                .Select(x => new PessoaDTO
+                {
+                    Id = x.Id,
+                    Nome = x.Nome,
+                    Celular = x.Celular,
+                    Cpf = x.Cpf,
+                    Cnpj = x.Cnpj,
+                    Email = x.Email,
+                    TipoPessoa = EnumHelper<TipoPessoa>.GetDisplayValue(x.TipoPessoa),
+                    Telefone = x.Telefone
+                })
+                .ToList();
+
+                return pessoas;
+            }
+        }
+
+        public void AtualizarDataGridViewPessoas(List<PessoaDTO> pessoas)
+        {
+            using (var scope = _scopeFactory.CreateScope())
+            {
                 this.dataGridViewPessoas.DataSource = pessoas;
 
                 this.dataGridViewPessoas.Columns["Id"].HeaderText = "ID";
@@ -90,6 +127,51 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
         private void button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            AtualizarDataGridViewPessoas(RetornarListaDePessoasPesquisadas(textBoxPesquisar.Text));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SelecionarPessoa();
+        }
+
+        public int RecuperarLinhaSelecionada()
+        {
+            var linhasSelecionadas = this.dataGridViewPessoas.SelectedRows;
+            if (linhasSelecionadas.Count > 0)
+            {
+                var idPessoa = linhasSelecionadas[0].Cells[0].Value;
+
+                if (idPessoa != null)
+                {
+                    return Convert.ToInt32(idPessoa);
+                }
+            }
+            return 0;
+        }
+
+        private void SelecionarPessoa()
+        {
+            var idPessoa = RecuperarLinhaSelecionada();
+
+            if (idPessoa == 0)
+            {
+                MessageBox.Show("Por favor, seleciona uma pessoa.");
+            }
+            else
+            {
+                _form_Cadastrar_ContasPagar.SetarPessoa(idPessoa);
+                this.Dispose();
+            }
+        }
+
+        private void dataGridViewPessoas_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            SelecionarPessoa();
         }
     }
 }

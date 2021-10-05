@@ -32,7 +32,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxPesquisar = new System.Windows.Forms.TextBox();
             this.dataGridViewPessoas = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPessoas)).BeginInit();
@@ -43,7 +43,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.textBoxPesquisar);
             this.panel1.Controls.Add(this.dataGridViewPessoas);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
@@ -68,14 +68,16 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             this.button1.TabIndex = 2;
             this.button1.Text = "Selecionar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // textBoxPesquisar
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Digite o nome ou o CPF/CNPJ";
-            this.textBox1.Size = new System.Drawing.Size(713, 23);
-            this.textBox1.TabIndex = 1;
+            this.textBoxPesquisar.Location = new System.Drawing.Point(3, 3);
+            this.textBoxPesquisar.Name = "textBoxPesquisar";
+            this.textBoxPesquisar.PlaceholderText = "Digite o nome ou o CPF/CNPJ";
+            this.textBoxPesquisar.Size = new System.Drawing.Size(713, 23);
+            this.textBoxPesquisar.TabIndex = 1;
+            this.textBoxPesquisar.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dataGridViewPessoas
             // 
@@ -90,6 +92,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             this.dataGridViewPessoas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPessoas.Size = new System.Drawing.Size(713, 260);
             this.dataGridViewPessoas.TabIndex = 0;
+            this.dataGridViewPessoas.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewPessoas_CellMouseDoubleClick);
             // 
             // Form_LocalizarPessoa
             // 
@@ -115,7 +118,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxPesquisar;
         private System.Windows.Forms.DataGridView dataGridViewPessoas;
     }
 }
