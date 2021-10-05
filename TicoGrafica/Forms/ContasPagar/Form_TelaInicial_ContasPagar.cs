@@ -30,12 +30,12 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
 
         private void buttonAlterarPessoa_Click(object sender, EventArgs e)
         {
-            //using (var scope = _scopeFactory.CreateScope())
-            //{
-            //    _produtoService = scope.ServiceProvider.GetRequiredService<IProdutoService>();
-            //    var produto = _produtoService.BuscarPorId(RecuperarLinhaSelecionada());
-            //    new Form_Alterar_Produto(this, _scopeFactory, produto).ShowDialog();
-            //}
+            using (var scope = _scopeFactory.CreateScope())
+            {
+                _contasPagarService = scope.ServiceProvider.GetRequiredService<IContasPagarService>();
+                var contasAPagar = _contasPagarService.BuscarPorId(RecuperarLinhaSelecionada());
+                new Form_Alterar_ContasPagar(this, _scopeFactory, contasAPagar).ShowDialog();
+            }
         }
 
         public void AtualizarDataGridViewProdutos()
@@ -94,40 +94,40 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
 
         public int RecuperarLinhaSelecionada()
         {
-            //var linhasSelecionadas = this.dataGridViewProdutos.SelectedRows;
-            //if (linhasSelecionadas.Count > 0)
-            //{
-            //    var idProduto = linhasSelecionadas[0].Cells[0].Value;
+            var linhasSelecionadas = this.dataGridViewContasPagar.SelectedRows;
+            if (linhasSelecionadas.Count > 0)
+            {
+                var idProduto = linhasSelecionadas[0].Cells[0].Value;
 
-            //    if (idProduto != null)
-            //    {
-            //        return Convert.ToInt32(idProduto);
-            //    }
-            //}
+                if (idProduto != null)
+                {
+                    return Convert.ToInt32(idProduto);
+                }
+            }
             return 0;
         }
 
         private void buttonExcluir_Click(object sender, EventArgs e)
         {
-            //new Form_Excluir_Produto(_scopeFactory, this).ShowDialog();
+            new Form_Excluir_ContasPagar(_scopeFactory, this).ShowDialog();
         }
 
         private void dataGridViewProdutos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //using (var scope = _scopeFactory.CreateScope())
-            //{
-            //    _produtoService = scope.ServiceProvider.GetRequiredService<IProdutoService>();
-            //    var produto = _produtoService.BuscarPorId(RecuperarLinhaSelecionada());
-            //    new Form_Alterar_Produto(this, _scopeFactory, produto).ShowDialog();
-            //}
+            using (var scope = _scopeFactory.CreateScope())
+            {
+                _contasPagarService = scope.ServiceProvider.GetRequiredService<IContasPagarService>();
+                var contasAPagar = _contasPagarService.BuscarPorId(RecuperarLinhaSelecionada());
+                new Form_Alterar_ContasPagar(this, _scopeFactory, contasAPagar).ShowDialog();
+            }
         }
 
         private void dataGridViewProdutos_KeyPress(object sender, KeyEventArgs e)
         {
-            //if (e.KeyCode == Keys.Delete)
-            //{
-            //    new Form_Excluir_Produto(_scopeFactory, this).ShowDialog();
-            //}
+            if (e.KeyCode == Keys.Delete)
+            {
+                new Form_Excluir_ContasPagar(_scopeFactory, this).ShowDialog();
+            }
         }
     }
 }

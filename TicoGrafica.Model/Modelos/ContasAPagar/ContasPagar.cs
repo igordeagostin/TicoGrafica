@@ -38,6 +38,7 @@ namespace TicoGrafica.Model.Modelos.ContasAPagar
             DataDeVencimento = contasReceber.DataDeVencimento;
             IdPessoa = contasReceber.IdPessoa;
             Situacao = contasReceber.Situacao;
+            Pessoa = null;
 
             DataAlteracao = DateTime.Now.DataTimeZoneCorreto();
         }

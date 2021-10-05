@@ -19,6 +19,7 @@ namespace TicoGrafica.Infrastructure.Repositories
         public ContasPagar BuscarPorId(int idContasPagar)
         {
             return _context.ContasPagar
+                .Include(x => x.Pessoa)
                 .FirstOrDefault(x => x.Id == idContasPagar);
         }
 

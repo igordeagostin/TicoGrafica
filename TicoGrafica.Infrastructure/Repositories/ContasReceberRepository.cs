@@ -3,6 +3,7 @@ using TicoGrafica.Model.Modelos.IRepositories;
 using TicoGrafica.Model.Modelos.ContasAReceber;
 using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace TicoGrafica.Infrastructure.Repositories
 {
@@ -18,6 +19,7 @@ namespace TicoGrafica.Infrastructure.Repositories
         public ContasReceber BuscarPorId(int idContasReceber)
         {
             return _context.ContasReceber
+                .Include(x => x.Pessoa)
                 .FirstOrDefault(x => x.Id == idContasReceber);
         }
 
@@ -30,7 +32,9 @@ namespace TicoGrafica.Infrastructure.Repositories
 
         public List<ContasReceber> BuscarTodos()
         {
-            return _context.ContasReceber.ToList();
+            return _context.ContasReceber
+                .Include(x => x.Pessoa)
+                .ToList();
         }
 
         public void Excluir(int id)

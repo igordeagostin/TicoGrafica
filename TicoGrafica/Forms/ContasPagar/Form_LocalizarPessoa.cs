@@ -19,10 +19,21 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
         private IPessoaService _pessoaService;
         private readonly IServiceScopeFactory _scopeFactory;
         private Form_Cadastrar_ContasPagar _form_Cadastrar_ContasPagar;
+        private Form_Alterar_ContasPagar _form_Alterar_ContasPagar;
         public Form_LocalizarPessoa(IServiceScopeFactory scopeFactory, Form_Cadastrar_ContasPagar form_Cadastrar_ContasPagar)
         {
             _scopeFactory = scopeFactory;
             _form_Cadastrar_ContasPagar = form_Cadastrar_ContasPagar;
+
+            InitializeComponent();
+
+            this.ActiveControl = textBoxPesquisar;
+        }
+
+        public Form_LocalizarPessoa(IServiceScopeFactory scopeFactory, Form_Alterar_ContasPagar form_Alterar_ContasPagar)
+        {
+            _scopeFactory = scopeFactory;
+            _form_Alterar_ContasPagar = form_Alterar_ContasPagar;
 
             InitializeComponent();
 
@@ -162,9 +173,14 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             {
                 MessageBox.Show("Por favor, seleciona uma pessoa.");
             }
-            else
+            else if(_form_Cadastrar_ContasPagar != null)
             {
                 _form_Cadastrar_ContasPagar.SetarPessoa(idPessoa);
+                this.Dispose();
+            }
+            else if (_form_Alterar_ContasPagar != null)
+            {
+                _form_Alterar_ContasPagar.SetarPessoa(idPessoa);
                 this.Dispose();
             }
         }
