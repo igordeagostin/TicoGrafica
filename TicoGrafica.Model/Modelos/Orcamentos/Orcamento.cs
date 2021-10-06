@@ -1,4 +1,6 @@
-﻿using TicoGrafica.Model.Modelos.Pessoas;
+﻿using System;
+using TicoGrafica.Model.Extensoes;
+using TicoGrafica.Model.Modelos.Pessoas;
 using TicoGrafica.Model.Modelos.Produtos;
 
 namespace TicoGrafica.Model.Modelos.Orcamentos
@@ -16,6 +18,32 @@ namespace TicoGrafica.Model.Modelos.Orcamentos
         public Orcamento()
         {
 
+        }
+
+        public Orcamento(int idPessoa, int idProduto, int quantidade, double valor, TipoFormaDePagamento formaDePagamento)
+        {
+            IdPessoa = idPessoa;
+            IdProduto = idProduto;
+            Quantidade = quantidade;
+            Valor = valor;
+            FormaDePagamento = formaDePagamento;
+
+            DataCriacao = DateTime.Now.DataTimeZoneCorreto();
+            DataAlteracao = DateTime.Now.DataTimeZoneCorreto();
+        }
+
+        public void Alterar(Orcamento orcamento)
+        {
+            Valor = orcamento.Valor;
+            IdPessoa = orcamento.IdPessoa;
+            IdProduto = orcamento.IdProduto;
+            Quantidade = orcamento.Quantidade;
+            FormaDePagamento = orcamento.FormaDePagamento;
+
+            Pessoa = null;
+            Produto = null;
+
+            DataAlteracao = DateTime.Now.DataTimeZoneCorreto();
         }
     }
 }

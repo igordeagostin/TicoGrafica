@@ -21,6 +21,20 @@ namespace TicoGrafica.Infrastructure.Repositories
                 .FirstOrDefault(x => x.Id == idProduto);
         }
 
+        public List<Produto> BuscarPorNome(string texto)
+        {
+            if (!string.IsNullOrEmpty(texto))
+            {
+                var textoEmMaiusculo = texto.ToUpper();
+
+                return _context.Produto
+                .Where(x => (!string.IsNullOrEmpty(x.Nome) && x.Nome.ToUpper().Contains(textoEmMaiusculo)))
+                .ToList();
+            }
+
+            return BuscarTodos();
+        }
+
         public Produto Adicionar(Produto objeto)
         {
             _context.Add(objeto);

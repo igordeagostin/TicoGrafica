@@ -55,6 +55,24 @@
     <Compile Update="Forms\ContasReceber\Form_TelaInicial_ContasReceber.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Orcamento\Form_Alterar_Orcamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Orcamento\Form_Cadastrar_Orcamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Orcamento\Form_Excluir_Orcamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Orcamento\Form_LocalizarProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Orcamento\Form_LocalizarPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Orcamento\Form_TelaInicial_Orcamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Pessoas\Form_Alterar_Pessoa.cs">
       <SubType>Form</SubType>
     </Compile>

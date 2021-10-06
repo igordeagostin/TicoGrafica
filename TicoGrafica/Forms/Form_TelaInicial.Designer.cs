@@ -70,12 +70,13 @@ namespace TicoGrafica
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(8, 515);
+            this.button5.Location = new System.Drawing.Point(4, 515);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(193, 96);
             this.button5.TabIndex = 4;
             this.button5.Text = "ORÇAMENTOS";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 

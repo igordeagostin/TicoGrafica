@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TicoGrafica.Model.Modelos.IRepositories;
 using TicoGrafica.Model.Modelos.Orcamentos;
+using Microsoft.EntityFrameworkCore;
 
 namespace TicoGrafica.Infrastructure.Repositories
 {
@@ -18,6 +19,8 @@ namespace TicoGrafica.Infrastructure.Repositories
         public Orcamento BuscarPorId(int idOrcamento)
         {
             return _context.Orcamento
+                .Include(x => x.Produto)
+                .Include(x => x.Pessoa)
                 .FirstOrDefault(x => x.Id == idOrcamento);
         }
 
@@ -30,7 +33,10 @@ namespace TicoGrafica.Infrastructure.Repositories
 
         public List<Orcamento> BuscarTodos()
         {
-            return _context.Orcamento.ToList();
+            return _context.Orcamento
+                .Include(x => x.Produto)
+                .Include(x => x.Pessoa)
+                .ToList();
         }
 
         public void Excluir(int id)

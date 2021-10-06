@@ -3,6 +3,7 @@ using System;
 using System.Windows.Forms;
 using TicoGrafica.Forms.Forms.ContasPagar;
 using TicoGrafica.Forms.Forms.ContasReceber;
+using TicoGrafica.Forms.Forms.Orcamento;
 using TicoGrafica.Forms.Forms.Pessoas;
 using TicoGrafica.Forms.Forms.Produtos;
 
@@ -14,6 +15,7 @@ namespace TicoGrafica
         private Form_TelaInicial_Produtos _telaInicialProdutos;
         private Form_TelaInicial_ContasPagar _telaInicialContasPagar;
         private Form_TelaInicial_ContasReceber _telaInicialContasReceber;
+        private Form_TelaInicial_Orcamento _telaInicialOrcamento;
         private readonly IServiceScopeFactory _scopeFactory;
 
         public Form_TelaInicial(IServiceScopeFactory scopeFactory)
@@ -69,6 +71,17 @@ namespace TicoGrafica
             this.panelPrincipal.Controls.Add(_telaInicialContasReceber);
             _telaInicialContasReceber.FormBorderStyle = FormBorderStyle.None;
             _telaInicialContasReceber.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            _telaInicialOrcamento = new Form_TelaInicial_Orcamento(_scopeFactory);
+
+            _telaInicialOrcamento.TopLevel = false;
+            _telaInicialOrcamento.AutoScroll = true;
+            this.panelPrincipal.Controls.Add(_telaInicialOrcamento);
+            _telaInicialOrcamento.FormBorderStyle = FormBorderStyle.None;
+            _telaInicialOrcamento.Show();
         }
     }
 }

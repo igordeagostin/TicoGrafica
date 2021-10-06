@@ -29,6 +29,11 @@ namespace TicoGrafica.Services.Services
             return _produtoRepository.BuscarPorId(idProduto);
         }
 
+        public List<Produto> BuscarPorNome(string texto)
+        {
+            return _produtoRepository.BuscarPorNome(texto);
+        }
+
         public List<Produto> BuscarTodos()
         {
             return _produtoRepository.BuscarTodos();
