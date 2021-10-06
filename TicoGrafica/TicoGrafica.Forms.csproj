@@ -40,6 +40,21 @@
     <Compile Update="Forms\ContasPagar\Form_TelaInicial_ContasPagar.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\ContasReceber\Form_Alterar_ContasReceber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ContasReceber\Form_Cadastrar_ContasReceber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ContasReceber\Form_Excluir_ContasReceber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ContasReceber\Form_LocalizarPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ContasReceber\Form_TelaInicial_ContasReceber.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Pessoas\Form_Alterar_Pessoa.cs">
       <SubType>Form</SubType>
     </Compile>
