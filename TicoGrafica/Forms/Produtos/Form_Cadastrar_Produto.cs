@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using TicoGrafica.Model.Modelos.Produtos;
 using TicoGrafica.Services.Services.IServices;
@@ -33,7 +34,7 @@ namespace TicoGrafica.Forms.Forms.Produtos
                 _produtoService = scope.ServiceProvider.GetRequiredService<IProdutoService>();
 
                 var produto = new Produto(textBoxNome.Text,
-                    (string.IsNullOrEmpty(textBoxValor.Text) ? null : (double?)Convert.ToDouble(textBoxValor.Text)));
+                    (string.IsNullOrEmpty(textBoxValor.Text) ? null : (double?)Convert.ToDouble(textBoxValor.Text.Replace(".", ","))));
 
                 _produtoService.Adicionar(produto);
                 this.Visible = false;
@@ -45,6 +46,11 @@ namespace TicoGrafica.Forms.Forms.Produtos
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+        }
+
+        private void textBoxValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
         }
     }
 }

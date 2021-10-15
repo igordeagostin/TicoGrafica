@@ -126,6 +126,7 @@ namespace TicoGrafica.Forms.Forms.Orcamento
             this.textBoxValor.Name = "textBoxValor";
             this.textBoxValor.Size = new System.Drawing.Size(131, 23);
             this.textBoxValor.TabIndex = 17;
+            this.textBoxValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxValor_KeyPress);
             // 
             // label3
             // 

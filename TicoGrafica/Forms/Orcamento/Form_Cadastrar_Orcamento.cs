@@ -100,5 +100,10 @@ namespace TicoGrafica.Forms.Forms.Orcamento
         {
             new Form_LocalizarProduto(_scopeFactory, this).ShowDialog();
         }
+
+        private void textBoxValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
+        }
     }
 }

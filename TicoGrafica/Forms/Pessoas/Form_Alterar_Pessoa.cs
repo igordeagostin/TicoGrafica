@@ -50,19 +50,26 @@ namespace TicoGrafica.Forms.Forms.Pessoas
 
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
-            using (var scope = _scopeFactory.CreateScope())
+            try
             {
-                _pessoaService = scope.ServiceProvider.GetRequiredService<IPessoaService>();
+                using (var scope = _scopeFactory.CreateScope())
+                {
+                    _pessoaService = scope.ServiceProvider.GetRequiredService<IPessoaService>();
 
-                var pessoa = new Pessoa(textBoxNome.Text, maskedTextBoxCelular.Text, maskedTextBoxTelefone.Text, textBoxEmail.Text,
-                (radioButtonFisica.Checked ? TipoPessoa.FISICA : TipoPessoa.JURIDICA), maskedTextBoxDocumento.Text,
-                maskedTextBoxDocumento.Text, new EnderecoPessoa(textBoxEndereco.Text, textBoxNumero.Text, textBoxNumero.Text,
-                textBoxComplemento.Text, textBoxMunicipio.Text, maskedTextBoxCEP.Text));
+                    var pessoa = new Pessoa(textBoxNome.Text, maskedTextBoxCelular.Text, maskedTextBoxTelefone.Text, textBoxEmail.Text,
+                    (radioButtonFisica.Checked ? TipoPessoa.FISICA : TipoPessoa.JURIDICA), maskedTextBoxDocumento.Text,
+                    maskedTextBoxDocumento.Text, new EnderecoPessoa(textBoxEndereco.Text, textBoxNumero.Text, textBoxNumero.Text,
+                    textBoxComplemento.Text, textBoxMunicipio.Text, maskedTextBoxCEP.Text));
 
-                _pessoa.Alterar(pessoa);
+                    _pessoa.Alterar(pessoa);
 
-                var a = _pessoaService.Alterar(_pessoa);
-                this.Dispose();
+                    var a = _pessoaService.Alterar(_pessoa);
+                    this.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             _telaInicial_Pessoas.AtualizarDataGridViewPessoas();

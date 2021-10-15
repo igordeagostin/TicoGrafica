@@ -110,5 +110,10 @@ namespace TicoGrafica.Forms.Forms.Orcamento
         {
             this.Visible = false;
         }
+
+        private void textBoxValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
+        }
     }
 }

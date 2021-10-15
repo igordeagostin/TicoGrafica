@@ -32,21 +32,28 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
 
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
-            using (var scope = _scopeFactory.CreateScope())
+            try
             {
-                _contasPagarService = scope.ServiceProvider.GetRequiredService<IContasPagarService>();
+                using (var scope = _scopeFactory.CreateScope())
+                {
+                    _contasPagarService = scope.ServiceProvider.GetRequiredService<IContasPagarService>();
 
-                double valor = (string.IsNullOrEmpty(textBoxValor.Text) ? 0 : Convert.ToDouble(textBoxValor.Text));
-                var dataDeEntrega = Convert.ToDateTime(maskedTextBoxDataDeEntrega.Text);
-                var dataDeVencimento = Convert.ToDateTime(maskedTextBoxDataDeVencimento.Text);
-                var idPessoa = Convert.ToInt32(textBoxIdPessoa.Text);
+                    double valor = (string.IsNullOrEmpty(textBoxValor.Text) ? 0 : Convert.ToDouble(textBoxValor.Text));
+                    var dataDeEntrega = Convert.ToDateTime(maskedTextBoxDataDeEntrega.Text);
+                    var dataDeVencimento = Convert.ToDateTime(maskedTextBoxDataDeVencimento.Text);
+                    var idPessoa = Convert.ToInt32(textBoxIdPessoa.Text);
 
-                var contasPagar = new Model.Modelos.ContasAPagar.ContasPagar(textBoxDescricao.Text, valor,
-                    dataDeEntrega, dataDeVencimento, idPessoa,
-                    (comboBoxTipoConta.SelectedIndex == 0 ? TipoSituacao.PENDENTE : TipoSituacao.QUITADO));
+                    var contasPagar = new Model.Modelos.ContasAPagar.ContasPagar(textBoxDescricao.Text, valor,
+                        dataDeEntrega, dataDeVencimento, idPessoa,
+                        (comboBoxTipoConta.SelectedIndex == 0 ? TipoSituacao.PENDENTE : TipoSituacao.QUITADO));
 
-                _contasPagarService.Adicionar(contasPagar);
-                this.Visible = false;
+                    _contasPagarService.Adicionar(contasPagar);
+                    this.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             _telaInicial_ContasPagar.AtualizarDataGridViewProdutos();
@@ -82,6 +89,11 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
                 comboBoxTipoConta.Items.Add(EnumHelper<TipoSituacao>.GetDisplayValue(tipo));
             }
             comboBoxTipoConta.SelectedIndex = 0;
+        }
+
+        private void textBoxValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
         }
     }
 }

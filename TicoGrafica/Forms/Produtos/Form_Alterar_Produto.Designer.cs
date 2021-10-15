@@ -31,12 +31,12 @@ namespace TicoGrafica.Forms.Forms.Produtos
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxValor = new System.Windows.Forms.TextBox();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxValor = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,14 @@ namespace TicoGrafica.Forms.Forms.Produtos
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(374, 117);
             this.panel1.TabIndex = 1;
+            // 
+            // textBoxValor
+            // 
+            this.textBoxValor.Location = new System.Drawing.Point(73, 33);
+            this.textBoxValor.Name = "textBoxValor";
+            this.textBoxValor.Size = new System.Drawing.Size(288, 23);
+            this.textBoxValor.TabIndex = 2;
+            this.textBoxValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxValor_KeyPress);
             // 
             // buttonCancelar
             // 
@@ -109,13 +117,6 @@ namespace TicoGrafica.Forms.Forms.Produtos
             this.label2.Size = new System.Drawing.Size(43, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Nome:";
-            // 
-            // textBoxValor
-            // 
-            this.textBoxValor.Location = new System.Drawing.Point(73, 33);
-            this.textBoxValor.Name = "textBoxValor";
-            this.textBoxValor.Size = new System.Drawing.Size(288, 23);
-            this.textBoxValor.TabIndex = 2;
             // 
             // Form_Alterar_Produto
             // 

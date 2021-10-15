@@ -29,6 +29,8 @@ namespace TicoGrafica.Model.Modelos.ContasAReceber
 
             DataCriacao = DateTime.Now.DataTimeZoneCorreto();
             DataAlteracao = DateTime.Now.DataTimeZoneCorreto();
+
+            EstaValido();
         }
 
         public void Alterar(ContasReceber contasReceber)
@@ -42,6 +44,8 @@ namespace TicoGrafica.Model.Modelos.ContasAReceber
             Pessoa = null;
 
             DataAlteracao = DateTime.Now.DataTimeZoneCorreto();
+
+            EstaValido();
         }
 
         public void QuitarConta()
@@ -54,6 +58,24 @@ namespace TicoGrafica.Model.Modelos.ContasAReceber
         {
             this.Situacao = TipoSituacao.PENDENTE;
             DataAlteracao = DateTime.Now.DataTimeZoneCorreto();
+        }
+
+        private void EstaValido()
+        {
+            if (this.DataDeEntrega < this.DataDeVencimento)
+            {
+                throw new ArgumentException("A data de entrega não pode ser menor que a data de vencimento.");
+            }
+
+            if (this.Valor < 0)
+            {
+                throw new ArgumentException("O valor não pode ser menor do que zero.");
+            }
+
+            if (IdPessoa <= 0)
+            {
+                throw new ArgumentException("É necessário selecionar uma pessoa.");
+            }
         }
     }
 }
