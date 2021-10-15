@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
-using TicoGrafica.Model.Modelos.ContasAReceber;
+using TicoGrafica.Model.Modelos.Orcamentos;
 using TicoGrafica.Model.Utils;
 using TicoGrafica.Services.Services.IServices;
 
@@ -30,37 +30,12 @@ namespace TicoGrafica.Forms.Forms.Orcamento
         private void PreencherTelaDeAlteracao()
         {
             textBoxPessoa.Text = _orcamento.Pessoa.Nome;
+            textBoxProduto.Text = _orcamento.Produto.Nome;
+            textBoxQuantidade.Text = _orcamento.Quantidade.ToString();
             textBoxValor.Text = _orcamento.Valor.ToString();
             textBoxIdPessoa.Text = _orcamento.IdPessoa.ToString();
-        }
-
-        private void buttonSalvar_Click(object sender, EventArgs e)
-        {
-            using (var scope = _scopeFactory.CreateScope())
-            {
-                _orcamentoService = scope.ServiceProvider.GetRequiredService<IOrcamentoService>();
-
-                double valor = (string.IsNullOrEmpty(textBoxValor.Text) ? 0 : Convert.ToDouble(textBoxValor.Text));
-                var dataDeEntrega = Convert.ToDateTime(maskedTextBoxDataDeEntrega.Text);
-                var dataDeVencimento = Convert.ToDateTime(maskedTextBoxDataDeVencimento.Text);
-                var idPessoa = Convert.ToInt32(textBoxIdPessoa.Text);
-
-                //var orcamento = new Model.Modelos.Orcamentos.Orcamento(textBoxDescricao.Text, valor,
-                //    dataDeEntrega, dataDeVencimento, idPessoa,
-                //    (comboBoxTipoConta.SelectedIndex == 0 ? TipoSituacao.PENDENTE : TipoSituacao.QUITADO));
-
-                //_orcamento.Alterar(orcamento);
-                _orcamentoService.Alterar(_orcamento);
-
-                this.Visible = false;
-            }
-
-            _telaInicial_Orcamento.AtualizarDataGridViewProdutos();
-        }
-
-        private void buttonCancelar_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
+            textBoxIdProduto.Text = _orcamento.IdProduto.ToString();
+            comboBoxFormaDePagamento.SelectedIndex = (int)_orcamento.FormaDePagamento;
         }
 
         private void buttonBuscarPessoa_Click(object sender, EventArgs e)
@@ -96,11 +71,44 @@ namespace TicoGrafica.Forms.Forms.Orcamento
 
         private void PreencherComboBox()
         {
-            foreach (var tipo in (TipoSituacao[])Enum.GetValues(typeof(TipoSituacao)))
+            foreach (var tipo in (TipoFormaDePagamento[])Enum.GetValues(typeof(TipoFormaDePagamento)))
             {
-                comboBoxTipoConta.Items.Add(EnumHelper<TipoSituacao>.GetDisplayValue(tipo));
+                comboBoxFormaDePagamento.Items.Add(EnumHelper<TipoFormaDePagamento>.GetDisplayValue(tipo));
             }
-            comboBoxTipoConta.SelectedIndex = 0;
+            comboBoxFormaDePagamento.SelectedIndex = 0;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new Form_LocalizarProduto(_scopeFactory, this).ShowDialog();
+        }
+
+        private void buttonSalvar_Click_1(object sender, EventArgs e)
+        {
+            using (var scope = _scopeFactory.CreateScope())
+            {
+                _orcamentoService = scope.ServiceProvider.GetRequiredService<IOrcamentoService>();
+
+                double valor = (string.IsNullOrEmpty(textBoxValor.Text) ? 0 : Convert.ToDouble(textBoxValor.Text));
+                var idPessoa = Convert.ToInt32(textBoxIdPessoa.Text);
+                var idProduto = Convert.ToInt32(textBoxIdProduto.Text);
+                var quantidade = Convert.ToInt32(textBoxQuantidade.Text);
+                var formaPagamento = (TipoFormaDePagamento)comboBoxFormaDePagamento.SelectedIndex;
+
+                var orcamento = new Model.Modelos.Orcamentos.Orcamento(idPessoa, idProduto, quantidade, valor, formaPagamento);
+
+                _orcamento.Alterar(orcamento);
+                _orcamentoService.Alterar(_orcamento);
+
+                this.Visible = false;
+            }
+
+            _telaInicial_Orcamento.AtualizarDataGridViewProdutos();
+        }
+
+        private void buttonCancelar_Click_1(object sender, EventArgs e)
+        {
+            this.Visible = false;
         }
     }
 }
