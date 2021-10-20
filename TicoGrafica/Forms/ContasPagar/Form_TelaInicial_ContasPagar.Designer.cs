@@ -58,6 +58,7 @@
             this.dataGridViewContasPagar.Size = new System.Drawing.Size(1135, 679);
             this.dataGridViewContasPagar.TabIndex = 1;
             this.dataGridViewContasPagar.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProdutos_CellDoubleClick);
+            this.dataGridViewContasPagar.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridViewContasPagar_RowPrePaint);
             this.dataGridViewContasPagar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewProdutos_KeyPress);
             // 
             // panelBotoesPessoas

@@ -31,6 +31,11 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelFrequenciaRepetir = new System.Windows.Forms.Label();
+            this.comboBoxFrequenciaRepetir = new System.Windows.Forms.ComboBox();
+            this.labelQuantidadeRepetir = new System.Windows.Forms.Label();
+            this.textBoxQuantidadeRepetir = new System.Windows.Forms.TextBox();
+            this.checkBoxCadastrarVarios = new System.Windows.Forms.CheckBox();
             this.textBoxValor = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxTipoConta = new System.Windows.Forms.ComboBox();
@@ -63,6 +68,11 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.labelFrequenciaRepetir);
+            this.panel1.Controls.Add(this.comboBoxFrequenciaRepetir);
+            this.panel1.Controls.Add(this.labelQuantidadeRepetir);
+            this.panel1.Controls.Add(this.textBoxQuantidadeRepetir);
+            this.panel1.Controls.Add(this.checkBoxCadastrarVarios);
             this.panel1.Controls.Add(this.textBoxValor);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.comboBoxTipoConta);
@@ -81,8 +91,67 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(13, 41);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(507, 188);
+            this.panel1.Size = new System.Drawing.Size(507, 264);
             this.panel1.TabIndex = 1;
+            // 
+            // labelFrequenciaRepetir
+            // 
+            this.labelFrequenciaRepetir.AutoSize = true;
+            this.labelFrequenciaRepetir.Enabled = false;
+            this.labelFrequenciaRepetir.Location = new System.Drawing.Point(293, 177);
+            this.labelFrequenciaRepetir.Name = "labelFrequenciaRepetir";
+            this.labelFrequenciaRepetir.Size = new System.Drawing.Size(68, 15);
+            this.labelFrequenciaRepetir.TabIndex = 23;
+            this.labelFrequenciaRepetir.Text = "Frequência:";
+            this.labelFrequenciaRepetir.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelFrequenciaRepetir.Click += new System.EventHandler(this.labelFrequenciaRepetir_Click);
+            // 
+            // comboBoxFrequenciaRepetir
+            // 
+            this.comboBoxFrequenciaRepetir.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxFrequenciaRepetir.Enabled = false;
+            this.comboBoxFrequenciaRepetir.FormattingEnabled = true;
+            this.comboBoxFrequenciaRepetir.Items.AddRange(new object[] {
+            "DIAS",
+            "MESES"});
+            this.comboBoxFrequenciaRepetir.Location = new System.Drawing.Point(371, 174);
+            this.comboBoxFrequenciaRepetir.Name = "comboBoxFrequenciaRepetir";
+            this.comboBoxFrequenciaRepetir.Size = new System.Drawing.Size(131, 23);
+            this.comboBoxFrequenciaRepetir.TabIndex = 22;
+            this.comboBoxFrequenciaRepetir.SelectedIndexChanged += new System.EventHandler(this.comboBoxFrequenciaRepetir_SelectedIndexChanged);
+            // 
+            // labelQuantidadeRepetir
+            // 
+            this.labelQuantidadeRepetir.AutoSize = true;
+            this.labelQuantidadeRepetir.Enabled = false;
+            this.labelQuantidadeRepetir.Location = new System.Drawing.Point(3, 177);
+            this.labelQuantidadeRepetir.Name = "labelQuantidadeRepetir";
+            this.labelQuantidadeRepetir.Size = new System.Drawing.Size(72, 15);
+            this.labelQuantidadeRepetir.TabIndex = 21;
+            this.labelQuantidadeRepetir.Text = "Quantidade:";
+            this.labelQuantidadeRepetir.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelQuantidadeRepetir.Click += new System.EventHandler(this.labelQuantidadeRepetir_Click);
+            // 
+            // textBoxQuantidadeRepetir
+            // 
+            this.textBoxQuantidadeRepetir.Enabled = false;
+            this.textBoxQuantidadeRepetir.Location = new System.Drawing.Point(103, 174);
+            this.textBoxQuantidadeRepetir.Name = "textBoxQuantidadeRepetir";
+            this.textBoxQuantidadeRepetir.Size = new System.Drawing.Size(110, 23);
+            this.textBoxQuantidadeRepetir.TabIndex = 20;
+            this.textBoxQuantidadeRepetir.TextChanged += new System.EventHandler(this.textBoxQuantidadeRepetir_TextChanged);
+            this.textBoxQuantidadeRepetir.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxQuantidadeRepetir_KeyPress);
+            // 
+            // checkBoxCadastrarVarios
+            // 
+            this.checkBoxCadastrarVarios.AutoSize = true;
+            this.checkBoxCadastrarVarios.Location = new System.Drawing.Point(4, 145);
+            this.checkBoxCadastrarVarios.Name = "checkBoxCadastrarVarios";
+            this.checkBoxCadastrarVarios.Size = new System.Drawing.Size(110, 19);
+            this.checkBoxCadastrarVarios.TabIndex = 19;
+            this.checkBoxCadastrarVarios.Text = "Cadastrar vários";
+            this.checkBoxCadastrarVarios.UseVisualStyleBackColor = true;
+            this.checkBoxCadastrarVarios.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // textBoxValor
             // 
@@ -178,7 +247,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             // 
             // textBoxIdPessoa
             // 
-            this.textBoxIdPessoa.Location = new System.Drawing.Point(4, 151);
+            this.textBoxIdPessoa.Location = new System.Drawing.Point(3, 235);
             this.textBoxIdPessoa.Name = "textBoxIdPessoa";
             this.textBoxIdPessoa.ReadOnly = true;
             this.textBoxIdPessoa.Size = new System.Drawing.Size(16, 23);
@@ -197,7 +266,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             // 
             // buttonCancelar
             // 
-            this.buttonCancelar.Location = new System.Drawing.Point(346, 151);
+            this.buttonCancelar.Location = new System.Drawing.Point(346, 236);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(75, 23);
             this.buttonCancelar.TabIndex = 4;
@@ -207,7 +276,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             // 
             // buttonSalvar
             // 
-            this.buttonSalvar.Location = new System.Drawing.Point(427, 151);
+            this.buttonSalvar.Location = new System.Drawing.Point(427, 236);
             this.buttonSalvar.Name = "buttonSalvar";
             this.buttonSalvar.Size = new System.Drawing.Size(75, 23);
             this.buttonSalvar.TabIndex = 3;
@@ -236,7 +305,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 238);
+            this.ClientSize = new System.Drawing.Size(532, 312);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
@@ -270,5 +339,10 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBoxTipoConta;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxQuantidadeRepetir;
+        private System.Windows.Forms.CheckBox checkBoxCadastrarVarios;
+        private System.Windows.Forms.Label labelQuantidadeRepetir;
+        private System.Windows.Forms.Label labelFrequenciaRepetir;
+        private System.Windows.Forms.ComboBox comboBoxFrequenciaRepetir;
     }
 }

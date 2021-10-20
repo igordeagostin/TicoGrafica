@@ -58,6 +58,7 @@
             this.dataGridViewContasReceber.Size = new System.Drawing.Size(1135, 679);
             this.dataGridViewContasReceber.TabIndex = 1;
             this.dataGridViewContasReceber.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProdutos_CellDoubleClick);
+            this.dataGridViewContasReceber.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridViewContasReceber_RowPrePaint);
             this.dataGridViewContasReceber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewProdutos_KeyPress);
             // 
             // panelBotoesPessoas

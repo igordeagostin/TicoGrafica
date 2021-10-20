@@ -60,16 +60,30 @@ namespace TicoGrafica.Model.Modelos.ContasAReceber
             DataAlteracao = DateTime.Now.DataTimeZoneCorreto();
         }
 
+        public void AdicionarTempo(int medida, int quantidadeParaAdicionar)
+        {
+            if (medida == 0)
+            {
+                this.DataDeEntrega = this.DataDeEntrega.AddDays(quantidadeParaAdicionar);
+                this.DataDeVencimento = this.DataDeVencimento.AddDays(quantidadeParaAdicionar);
+            }
+            else
+            {
+                this.DataDeEntrega = this.DataDeEntrega.AddMonths(quantidadeParaAdicionar);
+                this.DataDeVencimento = this.DataDeVencimento.AddMonths(quantidadeParaAdicionar);
+            }
+        }
+
         private void EstaValido()
         {
-            if (this.DataDeEntrega < this.DataDeVencimento)
+            if (this.DataDeVencimento < this.DataDeEntrega && this.Situacao == TipoSituacao.PENDENTE)
             {
-                throw new ArgumentException("A data de entrega não pode ser menor que a data de vencimento.");
+                throw new ArgumentException("A data de vencimento não pode ser menor que a data de entrega.");
             }
 
-            if (this.Valor < 0)
+            if (this.Valor <= 0)
             {
-                throw new ArgumentException("O valor não pode ser menor do que zero.");
+                throw new ArgumentException("O valor deve ser maior do que zero.");
             }
 
             if (IdPessoa <= 0)

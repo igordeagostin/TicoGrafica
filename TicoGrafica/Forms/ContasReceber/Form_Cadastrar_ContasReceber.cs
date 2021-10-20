@@ -48,6 +48,9 @@ namespace TicoGrafica.Forms.Forms.ContasReceber
                         (comboBoxTipoConta.SelectedIndex == 0 ? TipoSituacao.PENDENTE : TipoSituacao.QUITADO));
 
                     _contasPagarService.Adicionar(contasPagar);
+
+                    CadastrarVarios(valor, dataDeEntrega, dataDeVencimento, idPessoa);
+
                     this.Visible = false;
                 }
             }
@@ -57,6 +60,23 @@ namespace TicoGrafica.Forms.Forms.ContasReceber
             }
 
             _telaInicial_ContasReceber.AtualizarDataGridViewProdutos();
+        }
+
+        private void CadastrarVarios(double valor, DateTime dataDeEntrega, DateTime dataDeVencimento, int idPessoa)
+        {
+            if (checkBoxCadastrarVarios.Checked && !string.IsNullOrEmpty(textBoxQuantidadeRepetir.Text) && Convert.ToInt32(textBoxQuantidadeRepetir.Text) > 0)
+            {
+                for (int contador = 1; contador <= Convert.ToInt32(textBoxQuantidadeRepetir.Text); contador++)
+                {
+                    var novaConta = new Model.Modelos.ContasAReceber.ContasReceber(textBoxDescricao.Text, valor,
+                        dataDeEntrega, dataDeVencimento, idPessoa,
+                        (comboBoxTipoConta.SelectedIndex == 0 ? TipoSituacao.PENDENTE : TipoSituacao.QUITADO));
+
+                    novaConta.AdicionarTempo(comboBoxFrequenciaRepetir.SelectedIndex, contador);
+
+                    _contasPagarService.Adicionar(novaConta);
+                }
+            }
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
@@ -94,6 +114,19 @@ namespace TicoGrafica.Forms.Forms.ContasReceber
         private void textBoxValor_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
+        }
+
+        private void checkBoxCadastrarVarios_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxQuantidadeRepetir.Enabled = checkBoxCadastrarVarios.Checked;
+            comboBoxFrequenciaRepetir.Enabled = checkBoxCadastrarVarios.Checked;
+            labelFrequenciaRepetir.Enabled = checkBoxCadastrarVarios.Checked;
+            labelQuantidadeRepetir.Enabled = checkBoxCadastrarVarios.Checked;
+        }
+
+        private void textBoxQuantidadeRepetir_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

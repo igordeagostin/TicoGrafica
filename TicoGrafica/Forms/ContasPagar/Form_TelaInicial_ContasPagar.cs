@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using TicoGrafica.Forms.DTOs;
@@ -127,6 +128,15 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             if (e.KeyCode == Keys.Delete)
             {
                 new Form_Excluir_ContasPagar(_scopeFactory, this).ShowDialog();
+            }
+        }
+
+        private void dataGridViewContasPagar_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            if (dataGridViewContasPagar.Rows[e.RowIndex].Cells["Situacao"].Value.ToString() == "PENDENTE" &&
+               Convert.ToDateTime(dataGridViewContasPagar.Rows[e.RowIndex].Cells["DataDeVencimento"].Value.ToString()) < DateTime.Now)
+            {
+                dataGridViewContasPagar.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.OrangeRed;
             }
         }
     }
