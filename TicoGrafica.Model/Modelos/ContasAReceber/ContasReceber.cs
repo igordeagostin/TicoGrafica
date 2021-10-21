@@ -8,7 +8,7 @@ namespace TicoGrafica.Model.Modelos.ContasAReceber
     {
         public string Descricao { get; private set; }
         public double Valor { get; private set; }
-        public DateTime DataDeEntrega { get; private set; }
+        public DateTime DataDoPedido { get; private set; }
         public DateTime DataDeVencimento { get; private set; }
         public int IdPessoa { get; private set; }
         public TipoSituacao Situacao { get; private set; }
@@ -18,11 +18,11 @@ namespace TicoGrafica.Model.Modelos.ContasAReceber
         {
 
         }
-        public ContasReceber(string descricao, double valor, DateTime dataDeEntrega, DateTime dataDeVencimento, int idPessoa, TipoSituacao situacao)
+        public ContasReceber(string descricao, double valor, DateTime dataDoPedido, DateTime dataDeVencimento, int idPessoa, TipoSituacao situacao)
         {
             Descricao = descricao;
             Valor = valor;
-            DataDeEntrega = dataDeEntrega;
+            DataDoPedido = dataDoPedido;
             DataDeVencimento = dataDeVencimento;
             IdPessoa = idPessoa;
             Situacao = situacao;
@@ -37,7 +37,7 @@ namespace TicoGrafica.Model.Modelos.ContasAReceber
         {
             Descricao = contasReceber.Descricao;
             Valor = contasReceber.Valor;
-            DataDeEntrega = contasReceber.DataDeEntrega;
+            DataDoPedido = contasReceber.DataDoPedido;
             DataDeVencimento = contasReceber.DataDeVencimento;
             IdPessoa = contasReceber.IdPessoa;
             Situacao = contasReceber.Situacao;
@@ -64,19 +64,19 @@ namespace TicoGrafica.Model.Modelos.ContasAReceber
         {
             if (medida == 0)
             {
-                this.DataDeEntrega = this.DataDeEntrega.AddDays(quantidadeParaAdicionar);
+                this.DataDoPedido = this.DataDoPedido.AddDays(quantidadeParaAdicionar);
                 this.DataDeVencimento = this.DataDeVencimento.AddDays(quantidadeParaAdicionar);
             }
             else
             {
-                this.DataDeEntrega = this.DataDeEntrega.AddMonths(quantidadeParaAdicionar);
+                this.DataDoPedido = this.DataDoPedido.AddMonths(quantidadeParaAdicionar);
                 this.DataDeVencimento = this.DataDeVencimento.AddMonths(quantidadeParaAdicionar);
             }
         }
 
         private void EstaValido()
         {
-            if (this.DataDeVencimento < this.DataDeEntrega && this.Situacao == TipoSituacao.PENDENTE)
+            if (this.DataDeVencimento < this.DataDoPedido && this.Situacao == TipoSituacao.PENDENTE)
             {
                 throw new ArgumentException("A data de vencimento não pode ser menor que a data de entrega.");
             }

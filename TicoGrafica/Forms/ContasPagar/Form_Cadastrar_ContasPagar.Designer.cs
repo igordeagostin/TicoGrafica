@@ -41,9 +41,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             this.comboBoxTipoConta = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.maskedTextBoxDataDeVencimento = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBoxDataDeEntrega = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.textBoxDescricao = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxIdPessoa = new System.Windows.Forms.TextBox();
@@ -78,9 +76,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             this.panel1.Controls.Add(this.comboBoxTipoConta);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.maskedTextBoxDataDeVencimento);
-            this.panel1.Controls.Add(this.maskedTextBoxDataDeEntrega);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.textBoxDescricao);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.textBoxIdPessoa);
@@ -155,7 +151,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             // 
             // textBoxValor
             // 
-            this.textBoxValor.Location = new System.Drawing.Point(371, 98);
+            this.textBoxValor.Location = new System.Drawing.Point(371, 101);
             this.textBoxValor.Name = "textBoxValor";
             this.textBoxValor.Size = new System.Drawing.Size(131, 23);
             this.textBoxValor.TabIndex = 17;
@@ -164,7 +160,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(329, 103);
+            this.label3.Location = new System.Drawing.Point(325, 104);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 15);
             this.label3.TabIndex = 18;
@@ -175,7 +171,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             // 
             this.comboBoxTipoConta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTipoConta.FormattingEnabled = true;
-            this.comboBoxTipoConta.Location = new System.Drawing.Point(103, 100);
+            this.comboBoxTipoConta.Location = new System.Drawing.Point(103, 67);
             this.comboBoxTipoConta.Name = "comboBoxTipoConta";
             this.comboBoxTipoConta.Size = new System.Drawing.Size(140, 23);
             this.comboBoxTipoConta.TabIndex = 16;
@@ -183,7 +179,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 101);
+            this.label7.Location = new System.Drawing.Point(3, 71);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 15);
             this.label7.TabIndex = 15;
@@ -199,15 +195,6 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             this.maskedTextBoxDataDeVencimento.TabIndex = 14;
             this.maskedTextBoxDataDeVencimento.ValidatingType = typeof(System.DateTime);
             // 
-            // maskedTextBoxDataDeEntrega
-            // 
-            this.maskedTextBoxDataDeEntrega.Location = new System.Drawing.Point(103, 67);
-            this.maskedTextBoxDataDeEntrega.Mask = "00/00/0000";
-            this.maskedTextBoxDataDeEntrega.Name = "maskedTextBoxDataDeEntrega";
-            this.maskedTextBoxDataDeEntrega.Size = new System.Drawing.Size(140, 23);
-            this.maskedTextBoxDataDeEntrega.TabIndex = 13;
-            this.maskedTextBoxDataDeEntrega.ValidatingType = typeof(System.DateTime);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -217,16 +204,6 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             this.label6.TabIndex = 12;
             this.label6.Text = "Data de vencimento:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 70);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 15);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Data de entrega:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // textBoxDescricao
             // 
@@ -332,9 +309,7 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
         private System.Windows.Forms.TextBox textBoxDescricao;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxDataDeVencimento;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxDataDeEntrega;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxValor;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBoxTipoConta;

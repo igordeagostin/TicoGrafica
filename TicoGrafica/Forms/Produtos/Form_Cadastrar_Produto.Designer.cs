@@ -31,6 +31,8 @@ namespace TicoGrafica.Forms.Forms.Produtos
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBoxUnidadeDeMedida = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.textBoxValor = new System.Windows.Forms.TextBox();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
@@ -53,6 +55,8 @@ namespace TicoGrafica.Forms.Forms.Produtos
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.comboBoxUnidadeDeMedida);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.textBoxValor);
             this.panel1.Controls.Add(this.buttonCancelar);
             this.panel1.Controls.Add(this.buttonSalvar);
@@ -61,8 +65,27 @@ namespace TicoGrafica.Forms.Forms.Produtos
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(13, 41);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(374, 123);
+            this.panel1.Size = new System.Drawing.Size(374, 160);
             this.panel1.TabIndex = 1;
+            // 
+            // comboBoxUnidadeDeMedida
+            // 
+            this.comboBoxUnidadeDeMedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxUnidadeDeMedida.FormattingEnabled = true;
+            this.comboBoxUnidadeDeMedida.Location = new System.Drawing.Point(74, 67);
+            this.comboBoxUnidadeDeMedida.Name = "comboBoxUnidadeDeMedida";
+            this.comboBoxUnidadeDeMedida.Size = new System.Drawing.Size(288, 23);
+            this.comboBoxUnidadeDeMedida.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(4, 70);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 15);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Medida:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // textBoxValor
             // 
@@ -74,7 +97,7 @@ namespace TicoGrafica.Forms.Forms.Produtos
             // 
             // buttonCancelar
             // 
-            this.buttonCancelar.Location = new System.Drawing.Point(206, 81);
+            this.buttonCancelar.Location = new System.Drawing.Point(206, 132);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(75, 23);
             this.buttonCancelar.TabIndex = 4;
@@ -84,7 +107,7 @@ namespace TicoGrafica.Forms.Forms.Produtos
             // 
             // buttonSalvar
             // 
-            this.buttonSalvar.Location = new System.Drawing.Point(287, 81);
+            this.buttonSalvar.Location = new System.Drawing.Point(287, 132);
             this.buttonSalvar.Name = "buttonSalvar";
             this.buttonSalvar.Size = new System.Drawing.Size(75, 23);
             this.buttonSalvar.TabIndex = 3;
@@ -122,7 +145,7 @@ namespace TicoGrafica.Forms.Forms.Produtos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 176);
+            this.ClientSize = new System.Drawing.Size(401, 213);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
@@ -146,5 +169,7 @@ namespace TicoGrafica.Forms.Forms.Produtos
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Button buttonSalvar;
         private System.Windows.Forms.TextBox textBoxValor;
+        private System.Windows.Forms.ComboBox comboBoxUnidadeDeMedida;
+        private System.Windows.Forms.Label label4;
     }
 }

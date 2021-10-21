@@ -9,16 +9,18 @@ namespace TicoGrafica.Model.Modelos.Produtos
     {
         public string Nome { get; private set; }
         public double? Valor { get; private set; }
+        public TipoUnidadeDeMedida UnidadeDeMedida { get; private set; }
         public ICollection<Orcamento> Orcamentos { get; set; }
 
         public Produto()
         {
 
         }
-        public Produto(string nome, double? valor)
+        public Produto(string nome, double? valor, TipoUnidadeDeMedida tipoUnidadeDeMedida)
         {
             Nome = nome;
             Valor = valor;
+            UnidadeDeMedida = tipoUnidadeDeMedida;
             DataCriacao = DateTime.Now.DataTimeZoneCorreto();
             DataAlteracao = DateTime.Now.DataTimeZoneCorreto();
         }

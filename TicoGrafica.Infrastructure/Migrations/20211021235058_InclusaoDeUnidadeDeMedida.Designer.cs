@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicoGrafica.Infrastructure;
 
 namespace TicoGrafica.Infrastructure.Migrations
 {
     [DbContext(typeof(TicoGraficaContext))]
-    partial class TicoGraficaContextModelSnapshot : ModelSnapshot
+    [Migration("20211021235058_InclusaoDeUnidadeDeMedida")]
+    partial class InclusaoDeUnidadeDeMedida
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

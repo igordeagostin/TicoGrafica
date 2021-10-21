@@ -39,17 +39,16 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
                     _contasPagarService = scope.ServiceProvider.GetRequiredService<IContasPagarService>();
 
                     double valor = (string.IsNullOrEmpty(textBoxValor.Text) ? 0 : Convert.ToDouble(textBoxValor.Text));
-                    var dataDeEntrega = Convert.ToDateTime(maskedTextBoxDataDeEntrega.Text);
                     var dataDeVencimento = Convert.ToDateTime(maskedTextBoxDataDeVencimento.Text);
                     var idPessoa = Convert.ToInt32(textBoxIdPessoa.Text);
 
                     var contasPagar = new Model.Modelos.ContasAPagar.ContasPagar(textBoxDescricao.Text, valor,
-                        dataDeEntrega, dataDeVencimento, idPessoa,
+                        dataDeVencimento, idPessoa,
                         (comboBoxTipoConta.SelectedIndex == 0 ? TipoSituacao.PENDENTE : TipoSituacao.QUITADO));
 
                     _contasPagarService.Adicionar(contasPagar);
 
-                    CadastrarVarios(valor, dataDeEntrega, dataDeVencimento, idPessoa);
+                    CadastrarVarios(valor, dataDeVencimento, idPessoa);
 
                     this.Visible = false;
                 }
@@ -62,14 +61,14 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             _telaInicial_ContasPagar.AtualizarDataGridViewProdutos();
         }
 
-        private void CadastrarVarios(double valor, DateTime dataDeEntrega, DateTime dataDeVencimento, int idPessoa)
+        private void CadastrarVarios(double valor, DateTime dataDeVencimento, int idPessoa)
         {
             if (checkBoxCadastrarVarios.Checked && !string.IsNullOrEmpty(textBoxQuantidadeRepetir.Text) && Convert.ToInt32(textBoxQuantidadeRepetir.Text) > 0)
             {
                 for (int contador = 1; contador <= Convert.ToInt32(textBoxQuantidadeRepetir.Text); contador++)
                 {
                     var novaConta = new Model.Modelos.ContasAPagar.ContasPagar(textBoxDescricao.Text, valor,
-                    dataDeEntrega, dataDeVencimento, idPessoa,
+                    dataDeVencimento, idPessoa,
                     (comboBoxTipoConta.SelectedIndex == 0 ? TipoSituacao.PENDENTE : TipoSituacao.QUITADO));
 
                     novaConta.AdicionarTempo(comboBoxFrequenciaRepetir.SelectedIndex, contador);

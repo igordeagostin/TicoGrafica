@@ -32,7 +32,7 @@ namespace TicoGrafica.Forms.Forms.ContasReceber
             textBoxDescricao.Text = _contasPagar.Descricao;
             textBoxValor.Text = _contasPagar.Valor.ToString();
             textBoxIdPessoa.Text = _contasPagar.IdPessoa.ToString();
-            maskedTextBoxDataDeEntrega.Text = _contasPagar.DataDeEntrega.ToString();
+            maskedTextBoxDataDoPedido.Text = _contasPagar.DataDoPedido.ToString();
             maskedTextBoxDataDeVencimento.Text = _contasPagar.DataDeVencimento.ToString();
             comboBoxTipoConta.SelectedIndex = (_contasPagar.Situacao == TipoSituacao.PENDENTE ? 0 : 1);
         }
@@ -46,12 +46,12 @@ namespace TicoGrafica.Forms.Forms.ContasReceber
                     _contasPagarService = scope.ServiceProvider.GetRequiredService<IContasReceberService>();
 
                     double valor = (string.IsNullOrEmpty(textBoxValor.Text) ? 0 : Convert.ToDouble(textBoxValor.Text));
-                    var dataDeEntrega = Convert.ToDateTime(maskedTextBoxDataDeEntrega.Text);
+                    var dataDoPedido = Convert.ToDateTime(maskedTextBoxDataDoPedido.Text);
                     var dataDeVencimento = Convert.ToDateTime(maskedTextBoxDataDeVencimento.Text);
                     var idPessoa = Convert.ToInt32(textBoxIdPessoa.Text);
 
                     var contasPagar = new Model.Modelos.ContasAReceber.ContasReceber(textBoxDescricao.Text, valor,
-                        dataDeEntrega, dataDeVencimento, idPessoa,
+                        dataDoPedido, dataDeVencimento, idPessoa,
                         (comboBoxTipoConta.SelectedIndex == 0 ? TipoSituacao.PENDENTE : TipoSituacao.QUITADO));
 
                     _contasPagar.Alterar(contasPagar);

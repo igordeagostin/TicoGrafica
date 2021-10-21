@@ -36,7 +36,7 @@ namespace TicoGrafica.Forms.Forms.ContasReceber
             this.comboBoxTipoConta = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.maskedTextBoxDataDeVencimento = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBoxDataDeEntrega = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxDataDoPedido = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxDescricao = new System.Windows.Forms.TextBox();
@@ -68,7 +68,7 @@ namespace TicoGrafica.Forms.Forms.ContasReceber
             this.panel1.Controls.Add(this.comboBoxTipoConta);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.maskedTextBoxDataDeVencimento);
-            this.panel1.Controls.Add(this.maskedTextBoxDataDeEntrega);
+            this.panel1.Controls.Add(this.maskedTextBoxDataDoPedido);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.textBoxDescricao);
@@ -130,14 +130,14 @@ namespace TicoGrafica.Forms.Forms.ContasReceber
             this.maskedTextBoxDataDeVencimento.TabIndex = 14;
             this.maskedTextBoxDataDeVencimento.ValidatingType = typeof(System.DateTime);
             // 
-            // maskedTextBoxDataDeEntrega
+            // maskedTextBoxDataDoPedido
             // 
-            this.maskedTextBoxDataDeEntrega.Location = new System.Drawing.Point(103, 67);
-            this.maskedTextBoxDataDeEntrega.Mask = "00/00/0000";
-            this.maskedTextBoxDataDeEntrega.Name = "maskedTextBoxDataDeEntrega";
-            this.maskedTextBoxDataDeEntrega.Size = new System.Drawing.Size(140, 23);
-            this.maskedTextBoxDataDeEntrega.TabIndex = 13;
-            this.maskedTextBoxDataDeEntrega.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBoxDataDoPedido.Location = new System.Drawing.Point(103, 67);
+            this.maskedTextBoxDataDoPedido.Mask = "00/00/0000";
+            this.maskedTextBoxDataDoPedido.Name = "maskedTextBoxDataDoPedido";
+            this.maskedTextBoxDataDoPedido.Size = new System.Drawing.Size(140, 23);
+            this.maskedTextBoxDataDoPedido.TabIndex = 13;
+            this.maskedTextBoxDataDoPedido.ValidatingType = typeof(System.DateTime);
             // 
             // label6
             // 
@@ -154,9 +154,9 @@ namespace TicoGrafica.Forms.Forms.ContasReceber
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(4, 70);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 15);
+            this.label5.Size = new System.Drawing.Size(91, 15);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Data de entrega:";
+            this.label5.Text = "Data do pedido:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // textBoxDescricao
@@ -263,7 +263,7 @@ namespace TicoGrafica.Forms.Forms.ContasReceber
         private System.Windows.Forms.TextBox textBoxDescricao;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxDataDeVencimento;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxDataDeEntrega;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxDataDoPedido;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxValor;

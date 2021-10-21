@@ -32,7 +32,6 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
             textBoxDescricao.Text = _contasPagar.Descricao;
             textBoxValor.Text = _contasPagar.Valor.ToString();
             textBoxIdPessoa.Text = _contasPagar.IdPessoa.ToString();
-            maskedTextBoxDataDeEntrega.Text = _contasPagar.DataDeEntrega.ToString();
             maskedTextBoxDataDeVencimento.Text = _contasPagar.DataDeVencimento.ToString();
             comboBoxTipoConta.SelectedIndex = (_contasPagar.Situacao == TipoSituacao.PENDENTE ? 0 : 1);
         }
@@ -46,12 +45,11 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
                     _contasPagarService = scope.ServiceProvider.GetRequiredService<IContasPagarService>();
 
                     double valor = (string.IsNullOrEmpty(textBoxValor.Text) ? 0 : Convert.ToDouble(textBoxValor.Text));
-                    var dataDeEntrega = Convert.ToDateTime(maskedTextBoxDataDeEntrega.Text);
                     var dataDeVencimento = Convert.ToDateTime(maskedTextBoxDataDeVencimento.Text);
                     var idPessoa = Convert.ToInt32(textBoxIdPessoa.Text);
 
                     var contasPagar = new Model.Modelos.ContasAPagar.ContasPagar(textBoxDescricao.Text, valor,
-                        dataDeEntrega, dataDeVencimento, idPessoa,
+                          dataDeVencimento, idPessoa,
                         (comboBoxTipoConta.SelectedIndex == 0 ? TipoSituacao.PENDENTE : TipoSituacao.QUITADO));
 
                     _contasPagar.Alterar(contasPagar);

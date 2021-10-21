@@ -50,7 +50,7 @@ namespace TicoGrafica.Forms.Forms.ContasReceber
                 .Select(x => new ContasReceberDTO
                 {
                     Id = x.Id,
-                    DataDeEntrega = x.DataDeEntrega,
+                    DataDoPedido = x.DataDoPedido,
                     DataDeVencimento = x.DataDeVencimento,
                     Descricao = x.Descricao,
                     Situacao = x.Situacao,
@@ -78,8 +78,8 @@ namespace TicoGrafica.Forms.Forms.ContasReceber
                 this.dataGridViewContasReceber.Columns["NomePessoa"].HeaderText = "PESSOA";
                 this.dataGridViewContasReceber.Columns["NomePessoa"].DisplayIndex = 4;
 
-                this.dataGridViewContasReceber.Columns["DataDeEntrega"].HeaderText = "DATA DE ENTREGA";
-                this.dataGridViewContasReceber.Columns["DataDeEntrega"].DisplayIndex = 5;
+                this.dataGridViewContasReceber.Columns["DataDoPedido"].HeaderText = "DATA DO PEDIDO";
+                this.dataGridViewContasReceber.Columns["DataDoPedido"].DisplayIndex = 5;
 
                 this.dataGridViewContasReceber.Columns["DataDeVencimento"].HeaderText = "DATA DE VENCIMENTO";
                 this.dataGridViewContasReceber.Columns["DataDeVencimento"].DisplayIndex = 6;

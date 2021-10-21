@@ -8,7 +8,6 @@ namespace TicoGrafica.Model.Modelos.ContasAPagar
     {
         public string Descricao { get; private set; }
         public double Valor { get; private set; }
-        public DateTime DataDeEntrega { get; private set; }
         public DateTime DataDeVencimento { get; private set; }
         public int IdPessoa { get; private set; }
         public TipoSituacao Situacao { get; private set; }
@@ -17,11 +16,10 @@ namespace TicoGrafica.Model.Modelos.ContasAPagar
         {
 
         }
-        public ContasPagar(string descricao, double valor, DateTime dataDeEntrega, DateTime dataDeVencimento, int idPessoa, TipoSituacao situacao)
+        public ContasPagar(string descricao, double valor, DateTime dataDeVencimento, int idPessoa, TipoSituacao situacao)
         {
             Descricao = descricao;
             Valor = valor;
-            DataDeEntrega = dataDeEntrega;
             DataDeVencimento = dataDeVencimento;
             IdPessoa = idPessoa;
             Situacao = situacao;
@@ -36,7 +34,6 @@ namespace TicoGrafica.Model.Modelos.ContasAPagar
         {
             Descricao = contasReceber.Descricao;
             Valor = contasReceber.Valor;
-            DataDeEntrega = contasReceber.DataDeEntrega;
             DataDeVencimento = contasReceber.DataDeVencimento;
             IdPessoa = contasReceber.IdPessoa;
             Situacao = contasReceber.Situacao;
@@ -63,23 +60,16 @@ namespace TicoGrafica.Model.Modelos.ContasAPagar
         {
             if (medida == 0)
             {
-                this.DataDeEntrega = this.DataDeEntrega.AddDays(quantidadeParaAdicionar);
                 this.DataDeVencimento = this.DataDeVencimento.AddDays(quantidadeParaAdicionar);
             }
             else
             {
-                this.DataDeEntrega = this.DataDeEntrega.AddMonths(quantidadeParaAdicionar);
                 this.DataDeVencimento = this.DataDeVencimento.AddMonths(quantidadeParaAdicionar);
             }
         }
 
         private void EstaValido()
         {
-            if (this.DataDeVencimento < this.DataDeEntrega && this.Situacao == TipoSituacao.PENDENTE)
-            {
-                throw new ArgumentException("A data de vencimento não pode ser menor que a data de entrega.");
-            }
-
             if (this.Valor <= 0)
             {
                 throw new ArgumentException("O valor deve ser maior do que zero.");

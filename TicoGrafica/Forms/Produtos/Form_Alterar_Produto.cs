@@ -36,7 +36,7 @@ namespace TicoGrafica.Forms.Forms.Produtos
                 _produtoService = scope.ServiceProvider.GetRequiredService<IProdutoService>();
 
                 var produto = new Produto(textBoxNome.Text,
-                    (string.IsNullOrEmpty(textBoxValor.Text) ? null : (double?)Convert.ToDouble(textBoxValor.Text.Replace(".", ","))));
+                    (string.IsNullOrEmpty(textBoxValor.Text) ? null : (double?)Convert.ToDouble(textBoxValor.Text.Replace(".", ","))), TipoUnidadeDeMedida.HORA);
 
                 _produto.Alterar(produto);
 

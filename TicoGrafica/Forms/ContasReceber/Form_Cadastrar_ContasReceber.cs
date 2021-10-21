@@ -39,7 +39,7 @@ namespace TicoGrafica.Forms.Forms.ContasReceber
                     _contasPagarService = scope.ServiceProvider.GetRequiredService<IContasReceberService>();
 
                     double valor = (string.IsNullOrEmpty(textBoxValor.Text) ? 0 : Convert.ToDouble(textBoxValor.Text));
-                    var dataDeEntrega = Convert.ToDateTime(maskedTextBoxDataDeEntrega.Text);
+                    var dataDeEntrega = Convert.ToDateTime(maskedTextBoxDataDoPedido.Text);
                     var dataDeVencimento = Convert.ToDateTime(maskedTextBoxDataDeVencimento.Text);
                     var idPessoa = Convert.ToInt32(textBoxIdPessoa.Text);
 

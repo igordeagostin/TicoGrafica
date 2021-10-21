@@ -60,11 +60,13 @@ namespace TicoGrafica.Forms.Forms.Pessoas
         private void radioButtonJuridica_CheckedChanged(object sender, EventArgs e)
         {
             maskedTextBoxDocumento.Mask = @"99\.999\.999/9999-99";
+            labelDocumento.Text = "CNPJ";
         }
 
         private void radioButtonFisica_CheckedChanged(object sender, EventArgs e)
         {
             maskedTextBoxDocumento.Mask = @"999\.999\.999-99";
+            labelDocumento.Text = "CPF";
         }
     }
 }

@@ -50,7 +50,6 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
                 .Select(x => new ContasPagarDTO
                 {
                     Id = x.Id,
-                    DataDeEntrega = x.DataDeEntrega,
                     DataDeVencimento = x.DataDeVencimento,
                     Descricao = x.Descricao,
                     Situacao = x.Situacao,
@@ -78,14 +77,11 @@ namespace TicoGrafica.Forms.Forms.ContasPagar
                 this.dataGridViewContasPagar.Columns["NomePessoa"].HeaderText = "PESSOA";
                 this.dataGridViewContasPagar.Columns["NomePessoa"].DisplayIndex = 4;
 
-                this.dataGridViewContasPagar.Columns["DataDeEntrega"].HeaderText = "DATA DE ENTREGA";
-                this.dataGridViewContasPagar.Columns["DataDeEntrega"].DisplayIndex = 5;
-
                 this.dataGridViewContasPagar.Columns["DataDeVencimento"].HeaderText = "DATA DE VENCIMENTO";
-                this.dataGridViewContasPagar.Columns["DataDeVencimento"].DisplayIndex = 6;
+                this.dataGridViewContasPagar.Columns["DataDeVencimento"].DisplayIndex = 5;
 
                 this.dataGridViewContasPagar.Columns["IdPessoa"].HeaderText = "ID";
-                this.dataGridViewContasPagar.Columns["IdPessoa"].DisplayIndex = 7;
+                this.dataGridViewContasPagar.Columns["IdPessoa"].DisplayIndex = 6;
                 this.dataGridViewContasPagar.Columns["IdPessoa"].Visible = false;
 
                 this.dataGridViewContasPagar.Update();

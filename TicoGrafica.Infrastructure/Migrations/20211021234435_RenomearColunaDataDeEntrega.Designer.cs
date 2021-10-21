@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicoGrafica.Infrastructure;
 
 namespace TicoGrafica.Infrastructure.Migrations
 {
     [DbContext(typeof(TicoGraficaContext))]
-    partial class TicoGraficaContextModelSnapshot : ModelSnapshot
+    [Migration("20211021234435_RenomearColunaDataDeEntrega")]
+    partial class RenomearColunaDataDeEntrega
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -175,9 +177,6 @@ namespace TicoGrafica.Infrastructure.Migrations
 
                     b.Property<string>("Nome")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("UnidadeDeMedida")
-                        .HasColumnType("INTEGER");
 
                     b.Property<double?>("Valor")
                         .HasColumnType("REAL");
