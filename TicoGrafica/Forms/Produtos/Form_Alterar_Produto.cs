@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using TicoGrafica.Model.Modelos.Produtos;
+using TicoGrafica.Model.Utils;
 using TicoGrafica.Services.Services.IServices;
 
 namespace TicoGrafica.Forms.Forms.Produtos
@@ -20,13 +21,24 @@ namespace TicoGrafica.Forms.Forms.Produtos
             _produto = produto;
 
             InitializeComponent();
+            PreencherComboBox();
             PreencherTelaDeAlteracao();
+        }
+
+        private void PreencherComboBox()
+        {
+            foreach (var tipo in (TipoUnidadeDeMedida[])Enum.GetValues(typeof(TipoUnidadeDeMedida)))
+            {
+                comboBoxUnidadeDeMedida.Items.Add(EnumHelper<TipoUnidadeDeMedida>.GetDisplayValue(tipo));
+            }
+            comboBoxUnidadeDeMedida.SelectedIndex = 0;
         }
 
         private void PreencherTelaDeAlteracao()
         {
             textBoxNome.Text = _produto.Nome;
             textBoxValor.Text = (_produto.Valor == null ? "" : _produto.Valor.ToString());
+            comboBoxUnidadeDeMedida.SelectedIndex = (int)_produto.UnidadeDeMedida;
         }
 
         private void buttonSalvar_Click(object sender, EventArgs e)
@@ -36,7 +48,8 @@ namespace TicoGrafica.Forms.Forms.Produtos
                 _produtoService = scope.ServiceProvider.GetRequiredService<IProdutoService>();
 
                 var produto = new Produto(textBoxNome.Text,
-                    (string.IsNullOrEmpty(textBoxValor.Text) ? null : (double?)Convert.ToDouble(textBoxValor.Text.Replace(".", ","))), TipoUnidadeDeMedida.HORA);
+                    (string.IsNullOrEmpty(textBoxValor.Text) ? null : (double?)Convert.ToDouble(textBoxValor.Text.Replace(".", ","))), 
+                    (TipoUnidadeDeMedida)comboBoxUnidadeDeMedida.SelectedIndex);
 
                 _produto.Alterar(produto);
 

@@ -37,6 +37,8 @@ namespace TicoGrafica.Forms.Forms.Produtos
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxUnidadeDeMedida = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +55,8 @@ namespace TicoGrafica.Forms.Forms.Produtos
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.comboBoxUnidadeDeMedida);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.textBoxValor);
             this.panel1.Controls.Add(this.buttonCancelar);
             this.panel1.Controls.Add(this.buttonSalvar);
@@ -61,7 +65,7 @@ namespace TicoGrafica.Forms.Forms.Produtos
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(13, 41);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(374, 117);
+            this.panel1.Size = new System.Drawing.Size(374, 160);
             this.panel1.TabIndex = 1;
             // 
             // textBoxValor
@@ -74,7 +78,7 @@ namespace TicoGrafica.Forms.Forms.Produtos
             // 
             // buttonCancelar
             // 
-            this.buttonCancelar.Location = new System.Drawing.Point(205, 72);
+            this.buttonCancelar.Location = new System.Drawing.Point(206, 132);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(75, 23);
             this.buttonCancelar.TabIndex = 4;
@@ -84,7 +88,7 @@ namespace TicoGrafica.Forms.Forms.Produtos
             // 
             // buttonSalvar
             // 
-            this.buttonSalvar.Location = new System.Drawing.Point(286, 72);
+            this.buttonSalvar.Location = new System.Drawing.Point(287, 132);
             this.buttonSalvar.Name = "buttonSalvar";
             this.buttonSalvar.Size = new System.Drawing.Size(75, 23);
             this.buttonSalvar.TabIndex = 3;
@@ -118,11 +122,30 @@ namespace TicoGrafica.Forms.Forms.Produtos
             this.label2.TabIndex = 0;
             this.label2.Text = "Nome:";
             // 
+            // comboBoxUnidadeDeMedida
+            // 
+            this.comboBoxUnidadeDeMedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxUnidadeDeMedida.FormattingEnabled = true;
+            this.comboBoxUnidadeDeMedida.Location = new System.Drawing.Point(73, 65);
+            this.comboBoxUnidadeDeMedida.Name = "comboBoxUnidadeDeMedida";
+            this.comboBoxUnidadeDeMedida.Size = new System.Drawing.Size(288, 23);
+            this.comboBoxUnidadeDeMedida.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(4, 68);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 15);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Medida:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Form_Alterar_Produto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 165);
+            this.ClientSize = new System.Drawing.Size(401, 213);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
@@ -146,5 +169,7 @@ namespace TicoGrafica.Forms.Forms.Produtos
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Button buttonSalvar;
         private System.Windows.Forms.TextBox textBoxValor;
+        private System.Windows.Forms.ComboBox comboBoxUnidadeDeMedida;
+        private System.Windows.Forms.Label label4;
     }
 }

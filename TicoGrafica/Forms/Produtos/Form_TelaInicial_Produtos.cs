@@ -3,6 +3,8 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using TicoGrafica.Forms.DTOs;
+using TicoGrafica.Model.Modelos.Produtos;
+using TicoGrafica.Model.Utils;
 using TicoGrafica.Services.Services.IServices;
 
 namespace TicoGrafica.Forms.Forms.Produtos
@@ -50,7 +52,8 @@ namespace TicoGrafica.Forms.Forms.Produtos
                 {
                     Id = x.Id,
                     Nome = x.Nome,
-                    Valor = x.Valor
+                    Valor = x.Valor,
+                    UnidadeDeMedida = EnumHelper<TipoUnidadeDeMedida>.GetDisplayValue(x.UnidadeDeMedida),
                 })
                 .ToList();
 
@@ -65,6 +68,9 @@ namespace TicoGrafica.Forms.Forms.Produtos
 
                 this.dataGridViewProdutos.Columns["Valor"].HeaderText = "VALOR";
                 this.dataGridViewProdutos.Columns["Valor"].DisplayIndex = 2;
+
+                this.dataGridViewProdutos.Columns["UnidadeDeMedida"].HeaderText = "MEDIDA";
+                this.dataGridViewProdutos.Columns["UnidadeDeMedida"].DisplayIndex = 3;
 
                 this.dataGridViewProdutos.Update();
                 this.dataGridViewProdutos.Refresh();

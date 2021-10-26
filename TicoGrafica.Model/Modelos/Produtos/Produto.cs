@@ -29,6 +29,7 @@ namespace TicoGrafica.Model.Modelos.Produtos
         {
             Nome = produto.Nome;
             Valor = produto.Valor;
+            UnidadeDeMedida = produto.UnidadeDeMedida;
             DataAlteracao = DateTime.Now.DataTimeZoneCorreto();
         }
     }
