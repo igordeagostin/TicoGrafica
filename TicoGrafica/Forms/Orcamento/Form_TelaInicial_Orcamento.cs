@@ -50,9 +50,9 @@ namespace TicoGrafica.Forms.Forms.Orcamento
                 {
                     Id = x.Id,
                     IdPessoa = (x.Pessoa == null ? 0 : x.Pessoa.Id),
-                    IdProduto = (x.Produto == null ? 0 : x.Produto.Id),
+                    //IdProduto = (x.Produto == null ? 0 : x.Produto.Id),
                     NomePessoa = x.Pessoa?.Nome,
-                    NomeProduto = x.Produto?.Nome,
+                   // NomeProduto = x.Produto?.Nome,
                     Valor = x.Valor,
                     Quantidade = x.Quantidade,
                     FormaDePagamento = x.FormaDePagamento
@@ -68,25 +68,25 @@ namespace TicoGrafica.Forms.Forms.Orcamento
                 this.dataGridViewOrcamento.Columns["NomePessoa"].HeaderText = "PESSOA";
                 this.dataGridViewOrcamento.Columns["NomePessoa"].DisplayIndex = 1;
 
-                this.dataGridViewOrcamento.Columns["NomeProduto"].HeaderText = "PRODUTO";
-                this.dataGridViewOrcamento.Columns["NomeProduto"].DisplayIndex = 2;
+                //this.dataGridViewOrcamento.Columns["NomeProduto"].HeaderText = "PRODUTO";
+                //this.dataGridViewOrcamento.Columns["NomeProduto"].DisplayIndex = 2;
 
                 this.dataGridViewOrcamento.Columns["Quantidade"].HeaderText = "QUANTIDADE";
-                this.dataGridViewOrcamento.Columns["Quantidade"].DisplayIndex = 3;
+                this.dataGridViewOrcamento.Columns["Quantidade"].DisplayIndex = 2;
 
                 this.dataGridViewOrcamento.Columns["Valor"].HeaderText = "VALOR";
-                this.dataGridViewOrcamento.Columns["Valor"].DisplayIndex = 4;
+                this.dataGridViewOrcamento.Columns["Valor"].DisplayIndex = 3;
 
                 this.dataGridViewOrcamento.Columns["FormaDePagamento"].HeaderText = "FORMA DE PAGAMENTO";
-                this.dataGridViewOrcamento.Columns["FormaDePagamento"].DisplayIndex = 5;
+                this.dataGridViewOrcamento.Columns["FormaDePagamento"].DisplayIndex = 4;
 
                 this.dataGridViewOrcamento.Columns["IdPessoa"].HeaderText = "ID";
-                this.dataGridViewOrcamento.Columns["IdPessoa"].DisplayIndex = 6;
+                this.dataGridViewOrcamento.Columns["IdPessoa"].DisplayIndex = 5;
                 this.dataGridViewOrcamento.Columns["IdPessoa"].Visible = false;
 
-                this.dataGridViewOrcamento.Columns["IdProduto"].HeaderText = "ID";
-                this.dataGridViewOrcamento.Columns["IdProduto"].DisplayIndex = 7;
-                this.dataGridViewOrcamento.Columns["IdProduto"].Visible = false;
+                //this.dataGridViewOrcamento.Columns["IdProduto"].HeaderText = "ID";
+                //this.dataGridViewOrcamento.Columns["IdProduto"].DisplayIndex = 7;
+                //this.dataGridViewOrcamento.Columns["IdProduto"].Visible = false;
 
                 this.dataGridViewOrcamento.Update();
                 this.dataGridViewOrcamento.Refresh();

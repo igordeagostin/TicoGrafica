@@ -50,9 +50,6 @@ namespace TicoGrafica.Infrastructure
             builder.Entity<Pessoa>().HasKey(m => m.Id);
             builder.Entity<Pessoa>().OwnsOne(p => p.Endereco);
 
-            ////Produto
-            //builder.Entity<EnderecoPessoa>().HasKey(m => m.IdPessoa);
-
             //Produto
             builder.Entity<Produto>().HasKey(m => m.Id);
 
@@ -63,11 +60,8 @@ namespace TicoGrafica.Infrastructure
                 .HasForeignKey(x => x.IdPessoa)
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
-            builder.Entity<Orcamento>().HasOne(x => x.Produto)
-                .WithMany(x => x.Orcamentos)
-                .HasForeignKey(x => x.IdProduto)
-                .IsRequired(true)
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.Entity<Orcamento>().HasMany(x => x.Produtos)
+                .WithMany(x => x.Orcamentos);
 
             //Contas a receber
             builder.Entity<ContasReceber>().HasKey(m => m.Id);

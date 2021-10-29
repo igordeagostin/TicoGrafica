@@ -30,11 +30,11 @@ namespace TicoGrafica.Forms.Forms.Orcamento
         private void PreencherTelaDeAlteracao()
         {
             textBoxPessoa.Text = _orcamento.Pessoa.Nome;
-            textBoxProduto.Text = _orcamento.Produto.Nome;
+            //textBoxProduto.Text = _orcamento.Produto.Nome;
             textBoxQuantidade.Text = _orcamento.Quantidade.ToString();
             textBoxValor.Text = _orcamento.Valor.ToString();
             textBoxIdPessoa.Text = _orcamento.IdPessoa.ToString();
-            textBoxIdProduto.Text = _orcamento.IdProduto.ToString();
+            //textBoxIdProduto.Text = _orcamento.IdProduto.ToString();
             comboBoxFormaDePagamento.SelectedIndex = (int)_orcamento.FormaDePagamento;
         }
 
@@ -95,7 +95,7 @@ namespace TicoGrafica.Forms.Forms.Orcamento
                 var quantidade = Convert.ToInt32(textBoxQuantidade.Text);
                 var formaPagamento = (TipoFormaDePagamento)comboBoxFormaDePagamento.SelectedIndex;
 
-                var orcamento = new Model.Modelos.Orcamentos.Orcamento(idPessoa, idProduto, quantidade, valor, formaPagamento);
+                var orcamento = new Model.Modelos.Orcamentos.Orcamento(idPessoa, quantidade, valor, formaPagamento);
 
                 _orcamento.Alterar(orcamento);
                 _orcamentoService.Alterar(_orcamento);
@@ -114,6 +114,16 @@ namespace TicoGrafica.Forms.Forms.Orcamento
         private void textBoxValor_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonBuscarPessoa_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

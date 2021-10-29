@@ -19,7 +19,7 @@ namespace TicoGrafica.Infrastructure.Repositories
         public Orcamento BuscarPorId(int idOrcamento)
         {
             return _context.Orcamento
-                .Include(x => x.Produto)
+                //.Include(x => x.Produto)
                 .Include(x => x.Pessoa)
                 .FirstOrDefault(x => x.Id == idOrcamento);
         }
@@ -34,7 +34,7 @@ namespace TicoGrafica.Infrastructure.Repositories
         public List<Orcamento> BuscarTodos()
         {
             return _context.Orcamento
-                .Include(x => x.Produto)
+                //.Include(x => x.Produto)
                 .Include(x => x.Pessoa)
                 .ToList();
         }

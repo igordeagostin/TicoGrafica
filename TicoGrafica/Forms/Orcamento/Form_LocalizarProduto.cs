@@ -15,10 +15,21 @@ namespace TicoGrafica.Forms.Forms.Orcamento
         private readonly IServiceScopeFactory _scopeFactory;
         private Form_Cadastrar_Orcamento _form_Cadastrar_Orcamento;
         private Form_Alterar_Orcamento _form_Alterar_Orcamento;
+        private Form_Inserir_Produto _form_Inserir_Produto;
         public Form_LocalizarProduto(IServiceScopeFactory scopeFactory, Form_Cadastrar_Orcamento form_Cadastrar_Orcamento)
         {
             _scopeFactory = scopeFactory;
             _form_Cadastrar_Orcamento = form_Cadastrar_Orcamento;
+
+            InitializeComponent();
+
+            this.ActiveControl = textBoxPesquisar;
+        }
+
+        public Form_LocalizarProduto(IServiceScopeFactory scopeFactory, Form_Inserir_Produto form_Inserir_Produto)
+        {
+            _scopeFactory = scopeFactory;
+            _form_Inserir_Produto = form_Inserir_Produto;
 
             InitializeComponent();
 
@@ -139,14 +150,9 @@ namespace TicoGrafica.Forms.Forms.Orcamento
             {
                 MessageBox.Show("Por favor, seleciona um produto.");
             }
-            else if (_form_Cadastrar_Orcamento != null)
+            else if (_form_Inserir_Produto != null)
             {
-                _form_Cadastrar_Orcamento.SetarProduto(idProduto);
-                this.Dispose();
-            }
-            else if (_form_Alterar_Orcamento != null)
-            {
-                _form_Alterar_Orcamento.SetarProduto(idProduto);
+                _form_Inserir_Produto.SetarProduto(idProduto);
                 this.Dispose();
             }
         }

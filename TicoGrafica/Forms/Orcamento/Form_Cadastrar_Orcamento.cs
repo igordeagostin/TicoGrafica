@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using TicoGrafica.Model.Utils;
 using TicoGrafica.Services.Services.IServices;
@@ -13,7 +14,6 @@ namespace TicoGrafica.Forms.Forms.Orcamento
         private readonly IServiceScopeFactory _scopeFactory;
         private IPessoaService _pessoaService;
         private IProdutoService _produtoService;
-
         public Form_Cadastrar_Orcamento(IServiceScopeFactory scopeFactory)
         {
             _scopeFactory = scopeFactory;
@@ -36,13 +36,13 @@ namespace TicoGrafica.Forms.Forms.Orcamento
             {
                 _orcamentoService = scope.ServiceProvider.GetRequiredService<IOrcamentoService>();
 
-                double valor = (string.IsNullOrEmpty(textBoxValor.Text) ? 0 : Convert.ToDouble(textBoxValor.Text));
-                var quantidade = Convert.ToInt32(textBoxQuantidade.Text);
+                //double valor = (string.IsNullOrEmpty(textBoxValor.Text) ? 0 : Convert.ToDouble(textBoxValor.Text));
+                //var quantidade = Convert.ToInt32(textBoxQuantidade.Text);
                 var formaPagamento = (Model.Modelos.Orcamentos.TipoFormaDePagamento)comboBoxFormaDePagamento.SelectedIndex;
                 var idPessoa = Convert.ToInt32(textBoxIdPessoa.Text);
                 var idProduto = Convert.ToInt32(textBoxIdProduto.Text);
 
-                var orcamento = new Model.Modelos.Orcamentos.Orcamento(idPessoa, idProduto, quantidade, valor, formaPagamento);
+                var orcamento = new Model.Modelos.Orcamentos.Orcamento(idPessoa, 1, 1, formaPagamento);
 
                 _orcamentoService.Adicionar(orcamento);
                 this.Visible = false;
@@ -74,7 +74,7 @@ namespace TicoGrafica.Forms.Forms.Orcamento
             }
         }
 
-        public void SetarProduto(int idProduto)
+        public void InserirProduto(int idProduto, int quantidade, int valor)
         {
             using (var scope = _scopeFactory.CreateScope())
             {
@@ -82,8 +82,7 @@ namespace TicoGrafica.Forms.Forms.Orcamento
 
                 var produto = _produtoService.BuscarPorId(idProduto);
 
-                textBoxProduto.Text = produto.Nome;
-                textBoxIdProduto.Text = idProduto.ToString();
+                this.dataGridViewProdutos.Rows.Add(produto.Id, produto.Nome, quantidade, valor);
             }
         }
 
@@ -93,6 +92,7 @@ namespace TicoGrafica.Forms.Forms.Orcamento
             {
                 comboBoxFormaDePagamento.Items.Add(EnumHelper<Model.Modelos.Orcamentos.TipoFormaDePagamento>.GetDisplayValue(tipo));
             }
+
             comboBoxFormaDePagamento.SelectedIndex = 0;
         }
 
@@ -104,6 +104,16 @@ namespace TicoGrafica.Forms.Forms.Orcamento
         private void textBoxValor_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            new Form_Inserir_Produto(_scopeFactory, this).ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -109,6 +109,7 @@ namespace TicoGrafica.Forms.Forms.Orcamento
             this.button1.TabIndex = 37;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label2
             // 
@@ -172,6 +173,7 @@ namespace TicoGrafica.Forms.Forms.Orcamento
             this.buttonBuscarPessoa.TabIndex = 27;
             this.buttonBuscarPessoa.Text = "Buscar";
             this.buttonBuscarPessoa.UseVisualStyleBackColor = true;
+            this.buttonBuscarPessoa.Click += new System.EventHandler(this.buttonBuscarPessoa_Click_1);
             // 
             // label3
             // 

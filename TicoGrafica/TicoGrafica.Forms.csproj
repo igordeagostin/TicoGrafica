@@ -58,6 +58,9 @@
     <Compile Update="Forms\Orcamento\Form_Alterar_Orcamento.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Orcamento\Form_Inserir_Produto.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Orcamento\Form_Cadastrar_Orcamento.cs">
       <SubType>Form</SubType>
     </Compile>
